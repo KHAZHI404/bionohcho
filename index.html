@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>bionohcho — спортивное питание</title>
+<meta name="description" content="Спортивное питание и витамины. Доставка по Чечне, отправка по России.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E4E6E1;
+  --surface:#FFFFFF;
+  --ink:#15211C;
+  --muted:#69756E;
+  --line:#CFD4CC;
+  --accent:#2F6F4E;
+  --accent-dark:#245840;
+  --warm:#A8551A;
+  --r:14px;
+  --safe:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:"Golos Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:15px;line-height:1.5;
+  padding-bottom:calc(84px + var(--safe));
+}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+
+/* ---------- Шапка ---------- */
+header{
+  position:sticky;top:0;z-index:40;
+  background:rgba(228,230,225,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:12px;height:58px}
+.mark{font-family:"Unbounded",sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;line-height:1}
+.mark span{display:block;font-family:"Golos Text",sans-serif;font-weight:500;font-size:11px;color:var(--muted);letter-spacing:.01em;margin-top:3px}
+.bar-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.icon-btn{
+  width:42px;height:42px;border-radius:11px;border:1px solid var(--line);
+  background:var(--surface);display:grid;place-items:center;position:relative;
+}
+.icon-btn svg{width:20px;height:20px}
+.badge{
+  position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;padding:0 5px;
+  background:var(--accent);color:#fff;border-radius:10px;
+  font-size:11px;font-weight:700;display:grid;place-items:center;
+}
+
+/* ---------- Герой ---------- */
+.hero{padding:26px 0 20px}
+.hero h1{
+  font-family:"Unbounded",sans-serif;font-weight:600;
+  font-size:clamp(26px,7vw,42px);line-height:1.08;letter-spacing:-.03em;max-width:15ch;
+}
+.hero p{margin-top:12px;max-width:52ch;color:var(--muted);font-size:15px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.fact{
+  background:var(--surface);border:1px solid var(--line);border-radius:999px;
+  padding:7px 13px;font-size:13px;font-weight:500;
+}
+.fact b{color:var(--accent);font-weight:600}
+
+/* ---------- Фильтры ---------- */
+.controls{position:sticky;top:58px;z-index:30;background:var(--paper);padding-top:10px;padding-bottom:10px}
+.search-row{display:flex;gap:8px}
+.search{
+  flex:1;position:relative;
+}
+.search input{
+  width:100%;height:44px;padding:0 14px 0 40px;border-radius:11px;
+  border:1px solid var(--line);background:var(--surface);
+}
+.search input::placeholder{color:var(--muted)}
+.search svg{position:absolute;left:13px;top:12px;width:18px;height:18px;color:var(--muted)}
+select.brand{
+  height:44px;border-radius:11px;border:1px solid var(--line);background:var(--surface);
+  padding:0 10px;max-width:44%;
+}
+.chips{display:flex;gap:7px;overflow-x:auto;margin-top:10px;padding-bottom:2px;scrollbar-width:none}
+.chips.sub{margin-top:8px}
+.chips.sub .chip{font-size:12.5px;padding:7px 12px;background:transparent}
+.chips.sub .chip[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;padding:9px 15px;border-radius:999px;
+  border:1px solid var(--line);background:var(--surface);
+  font-size:14px;font-weight:500;white-space:nowrap;
+}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ---------- Сетка ---------- */
+.grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
+  padding:6px 0 40px;
+}
+@media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr);gap:14px}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  overflow:hidden;display:flex;flex-direction:column;text-align:left;
+}
+.card:disabled{opacity:.55}
+.thumb{position:relative;aspect-ratio:1/1;background:#F4F5F2;overflow:hidden}
+.thumb img,.thumb svg{width:100%;height:100%;object-fit:contain;display:block}
+.flag{
+  position:absolute;top:8px;left:8px;padding:4px 8px;border-radius:7px;
+  font-size:11px;font-weight:600;background:var(--ink);color:#fff;
+}
+.flag.out{background:#8C1D18}
+.flag.sale{background:var(--warm)}
+.card-b{padding:10px 11px 12px;display:flex;flex-direction:column;flex:1}
+.brand{font-size:11px;font-weight:600;color:var(--accent);letter-spacing:.01em}
+.name{font-size:14px;font-weight:600;line-height:1.3;margin-top:3px}
+.meta{font-size:12px;color:var(--muted);margin-top:3px}
+.price-row{margin-top:auto;padding-top:10px;display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+.price{font-size:17px;font-weight:700;letter-spacing:-.02em}
+.old{font-size:13px;color:var(--muted);text-decoration:line-through}
+.per{font-size:11.5px;color:var(--muted);margin-top:2px;width:100%}
+
+/* ---------- Шторки ---------- */
+.scrim{
+  position:fixed;inset:0;background:rgba(21,33,28,.5);z-index:60;
+  opacity:0;pointer-events:none;transition:opacity .22s;
+}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:var(--paper);border-radius:20px 20px 0 0;
+  max-height:92vh;display:flex;flex-direction:column;
+  transform:translateY(101%);transition:transform .28s cubic-bezier(.32,.72,0,1);
+}
+.sheet.on{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.sheet,.scrim{transition:none}}
+@media(min-width:700px){
+  .sheet{max-width:540px;margin:0 auto;border-radius:20px;bottom:16px;left:16px;right:16px}
+}
+.sheet-head{
+  display:flex;align-items:center;gap:10px;padding:14px 16px;
+  border-bottom:1px solid var(--line);flex:0 0 auto;
+}
+.sheet-head h2{font-family:"Unbounded",sans-serif;font-weight:600;font-size:16px;letter-spacing:-.02em}
+.close{margin-left:auto;width:34px;height:34px;border-radius:9px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center}
+.sheet-body{overflow-y:auto;padding:16px;flex:1;-webkit-overflow-scrolling:touch}
+.sheet-foot{
+  padding:12px 16px calc(12px + var(--safe));border-top:1px solid var(--line);
+  background:var(--surface);flex:0 0 auto;
+}
+
+/* ---------- Карточка товара ---------- */
+.p-img{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);aspect-ratio:4/3;overflow:hidden;margin-bottom:14px}
+.p-img img,.p-img svg{width:100%;height:100%;object-fit:contain}
+.p-title{font-size:20px;font-weight:700;line-height:1.25;letter-spacing:-.02em;margin-top:4px}
+.p-price{font-size:26px;font-weight:700;letter-spacing:-.03em;margin-top:12px}
+.p-per{font-size:13px;color:var(--muted);margin-top:2px}
+.sec{margin-top:18px}
+.sec h3{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:7px}
+.sec p{font-size:14.5px;line-height:1.55}
+.opts{display:flex;flex-wrap:wrap;gap:7px}
+.opt{padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-size:14px}
+.opt[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.qty{display:flex;align-items:center;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.qty button{width:40px;height:44px;font-size:19px;font-weight:600}
+.qty span{min-width:30px;text-align:center;font-weight:600}
+.btn{
+  width:100%;height:52px;border-radius:13px;background:var(--accent);color:#fff;
+  font-size:16px;font-weight:600;display:grid;place-items:center;
+}
+.btn:active{background:var(--accent-dark)}
+.btn.ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.btn.tg{background:var(--ink)}
+.btn[disabled]{background:var(--line);color:var(--muted)}
+.foot-row{display:flex;gap:10px}
+.foot-row .btn{flex:1}
+
+/* ---------- Корзина ---------- */
+.line-item{display:flex;gap:11px;padding:12px 0;border-bottom:1px solid var(--line)}
+.line-item:last-child{border-bottom:none}
+.li-img{width:62px;height:62px;flex:0 0 auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.li-img img,.li-img svg{width:100%;height:100%;object-fit:contain}
+.li-main{flex:1;min-width:0}
+.li-name{font-size:14px;font-weight:600;line-height:1.3}
+.li-var{font-size:12.5px;color:var(--muted);margin-top:2px}
+.li-bot{display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px}
+.li-qty{display:flex;align-items:center;gap:1px;border:1px solid var(--line);border-radius:9px;background:var(--surface)}
+.li-qty button{width:30px;height:30px;font-size:16px;font-weight:600}
+.li-qty span{min-width:22px;text-align:center;font-size:13px;font-weight:600}
+.li-sum{font-size:14px;font-weight:700}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0 4px;font-size:15px}
+.total b{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.empty{text-align:center;padding:48px 20px;color:var(--muted)}
+.empty h3{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:6px}
+
+/* ---------- Форма ---------- */
+.field{margin-bottom:12px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:5px}
+.field input,.field textarea,.field select{
+  width:100%;min-height:46px;padding:11px 13px;border-radius:11px;
+  border:1px solid var(--line);background:var(--surface);
+}
+.field textarea{min-height:74px;resize:vertical}
+.field input:invalid:not(:placeholder-shown){border-color:#8C1D18}
+.field-error{display:block;margin-top:5px;font-size:12px;color:#8C1D18}
+.field.sub-field{margin-left:14px;padding-left:12px;border-left:2px solid var(--line)}
+.radio-grid{display:grid;gap:7px}
+.radio{
+  display:flex;align-items:flex-start;gap:10px;padding:12px;
+  border:1px solid var(--line);border-radius:11px;background:var(--surface);cursor:pointer;
+}
+.radio input{margin-top:2px;accent-color:var(--accent);width:18px;height:18px;flex:0 0 auto}
+.radio b{display:block;font-size:14.5px;font-weight:600}
+.radio small{color:var(--muted);font-size:12.5px}
+.radio:has(input:checked){border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.consent{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--muted);margin:14px 0 4px}
+.consent input{margin-top:1px;accent-color:var(--accent);width:17px;height:17px;flex:0 0 auto}
+
+/* ---------- Нижняя панель ---------- */
+.cartbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  padding:10px 16px calc(10px + var(--safe));
+  background:rgba(228,230,225,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);
+  transform:translateY(120%);transition:transform .25s;
+}
+.cartbar.on{transform:translateY(0)}
+.cartbar button{
+  width:100%;max-width:1048px;margin:0 auto;height:54px;border-radius:13px;
+  background:var(--accent);color:#fff;display:flex;align-items:center;
+  justify-content:space-between;padding:0 20px;font-size:16px;font-weight:600;
+}
+
+/* ---------- Подвал ---------- */
+footer{border-top:1px solid var(--line);padding:26px 0 30px;font-size:12.5px;color:var(--muted)}
+footer p{margin-bottom:8px;max-width:60ch}
+footer a{color:var(--accent)}
+.loading{text-align:center;padding:60px 20px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="mark">bionohcho<span>спортивное питание и витамины</span></div>
+    <div class="bar-right">
+      <button class="icon-btn" id="openCart" aria-label="Открыть корзину">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="badge" id="cartBadge" hidden>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Всё для набора, сушки и здоровья</h1>
+    <p>Оригинальное спортивное питание и витамины. Соберите корзину — заказ придёт мне в WhatsApp одним сообщением, я подтвержу наличие и посчитаю доставку.</p>
+    <div class="facts">
+      <div class="fact">Доставка по Чечне — <b>в тот же день или на следующий</b></div>
+      <div class="fact">Отправка по России</div>
+      <div class="fact">Оплата при получении или переводом</div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <div class="search-row">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="q" placeholder="Протеин, креатин, омега…" aria-label="Поиск по каталогу">
+      </div>
+      <select class="brand" id="brandSel" aria-label="Бренд"><option value="">Все бренды</option></select>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Категории"></div>
+    <div class="chips sub" id="subChips" role="group" aria-label="Подкатегории" hidden></div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="loading" id="loading" hidden>Загружаю каталог…</div>
+</main>
+
+<footer class="wrap">
+  <p><b>Не является лекарственным средством.</b> Перед применением проконсультируйтесь со специалистом. Пищевые добавки не заменяют полноценное питание.</p>
+  <p>Цены на витрине справочные. Точную сумму с доставкой подтверждаю в переписке.</p>
+  <p id="footContacts"></p>
+</footer>
+
+<div class="cartbar" id="cartbar">
+  <button id="cartbarBtn">
+    <span id="cartbarLeft">Корзина · 0</span>
+    <span id="cartbarRight">0 ₽</span>
+  </button>
+</div>
+
+<div class="scrim" id="scrim"></div>
+
+<!-- Шторка товара -->
+<div class="sheet" id="pSheet" role="dialog" aria-modal="true" aria-label="Товар">
+  <div class="sheet-head">
+    <h2>Товар</h2>
+    <button class="close" data-close aria-label="Закрыть">✕</button>
+  </div>
+  <div class="sheet-body" id="pBody"></div>
+  <div class="sheet-foot" id="pFoot"></div>
+</div>
+
+<!-- Шторка корзины -->
+<div class="sheet" id="cSheet" role="dialog" aria-modal="true" aria-label="Корзина">
+  <div class="sheet-head">
+    <h2 id="cTitle">Корзина</h2>
+    <button class="close" data-close aria-label="Закрыть">✕</button>
+  </div>
+  <div class="sheet-body" id="cBody"></div>
+  <div class="sheet-foot" id="cFoot"></div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   НАСТРОЙКИ — поменяй только этот блок
+   ═══════════════════════════════════════════════════════════ */
+
+const CONFIG = {
+  // Твой номер WhatsApp в международном формате, без плюса и пробелов.
+  // Пример для России: 79281234567
+  whatsapp: "79277109595",
+
+  // Ссылка на Google Таблицу с товарами (формат CSV).
+  // Пока пусто — витрина показывает 14 демо-товаров.
+  // Как получить ссылку — в инструкции.
+  sheetCsv: ""
+};
+
+/* ═══════════════════════════════════════════════════════════
+   Дальше менять ничего не нужно
+   ═══════════════════════════════════════════════════════════ */
+
+const CATS = ["Протеин","Гейнер","Креатин","Аминокислоты","HMB и таурин","Изотоники и электролиты","Жиросжигатели (похудение)","Энергетики","Предтренировочные комплексы","Пампинг и донаторы азота","Кофеин и гуарана","Тестобустеры и мужское здоровье","Витамины и БАДы","Батончики и снеки","Аксессуары","Одежда и мерч"];
+
+const DEMO = [
+{"id": "1", "name": "ShadoWhey", "brand": "DORIAN YATES", "cat": "Протеин", "sub": "Сывороточный (Whey)", "desc": "Сывороточный протеин для набора и восстановления мышц после тренировки. Быстро усваивается, подходит как основной источник белка в течение дня.", "use": "", "variants": [{"size": "2000 g", "price": 6700, "flavors": ["Black Forest Cake", "Blueberry Muffin", "Chocolate", "Chocolate-Hazelnut", "Coffee & Cream", "Cookies with Cream", "Pistachio", "Strawberry", "Vanilla"]}]},
+{"id": "2", "name": "Whey Tempro Protein Complex", "brand": "DORIAN YATES", "cat": "Протеин", "sub": "Сывороточный (Whey)", "desc": "Сывороточный протеин для набора и восстановления мышц после тренировки. Быстро усваивается, подходит как основной источник белка в течение дня.", "use": "", "variants": [{"size": "2270 g", "price": 6450, "flavors": ["Banana Ice Cream", "Classic Chocolate Ice Cream", "Coconut Milk", "Chocolate Hazelnut Ice Cream", "Strawberry Ice Cream"]}]},
+{"id": "3", "name": "GOLD Whey", "brand": "LEVRONE", "cat": "Протеин", "sub": "Сывороточный (Whey)", "desc": "Сывороточный протеин для набора и восстановления мышц после тренировки. Быстро усваивается, подходит как основной источник белка в течение дня.", "use": "", "variants": [{"size": "2 kg", "price": 7000, "flavors": ["Banana Peach", "Bunty", "Chocolate", "Coffee Frappe", "Cookies with Cream", "Peach Passionfruit", "Snikers", "Strawberry", "Strawberry Banana", "White Chocolate Cranberry", "Choc-Oro", "Vanilla"]}]},
+{"id": "4", "name": "100% Golden Whey", "brand": "MXL", "cat": "Протеин", "sub": "Сывороточный (Whey)", "desc": "Сывороточный протеин для набора и восстановления мышц после тренировки. Быстро усваивается, подходит как основной источник белка в течение дня.", "use": "", "variants": [{"size": "5 lb", "price": 8350, "flavors": ["Bananas & Cream", "Strawberry Cream"]}]},
+{"id": "5", "name": "100% Whey", "brand": "YLP", "cat": "Протеин", "sub": "Сывороточный (Whey)", "desc": "Сывороточный протеин для набора и восстановления мышц после тренировки. Быстро усваивается, подходит как основной источник белка в течение дня.", "use": "", "variants": [{"size": "900 g", "price": 2850, "flavors": ["Banana", "Banana - Melon", "Blueberry", "Cappuccino French Vanilla", "Cherry & Chocolate", "Chocolate", "Oreo cookies", "Pistachio ice cream", "Strawberry", "Vanilla"]}, {"size": "1800 g", "price": 4500, "flavors": ["Banana", "Banana - Melon", "Blueberry", "Cappuccino French Vanilla", "Cherry & Chocolate", "Chocolate", "Oreo cookies", "Pistachio ice cream", "Strawberry", "Vanilla"]}]},
+{"id": "6", "name": "ShadoWhey Isolate", "brand": "DORIAN YATES", "cat": "Протеин", "sub": "Изолят", "desc": "Изолят сывороточного протеина с минимумом жиров и углеводов. Высокая степень очистки белка — хороший выбор на сушке и при непереносимости лактозы.", "use": "", "variants": [{"size": "2000 g", "price": 7450, "flavors": ["Cookies with Cream", "Pistachio", "Strawberry", "Strawberry-Banana", "Vanilla Caramel", "Chocolate"]}]},
+{"id": "7", "name": "Anabolic Iso Whey", "brand": "LEVRONE", "cat": "Протеин", "sub": "Изолят", "desc": "Изолят сывороточного протеина с минимумом жиров и углеводов. Высокая степень очистки белка — хороший выбор на сушке и при непереносимости лактозы.", "use": "", "variants": [{"size": "2 kg", "price": 8000, "flavors": ["Banana Peach", "Bunty", "Choco-Oro", "Chocolate", "Cookies with Cream", "Pistachio", "Snikers", "Strawberry", "Vanilla"]}]},
+{"id": "8", "name": "GOLD Iso", "brand": "LEVRONE", "cat": "Протеин", "sub": "Изолят", "desc": "Изолят сывороточного протеина с минимумом жиров и углеводов. Высокая степень очистки белка — хороший выбор на сушке и при непереносимости лактозы.", "use": "", "variants": [{"size": "2 kg", "price": 7900, "flavors": ["Banana", "Banana Peach", "Bunty", "Chocolate", "Cookies with Cream", "Snikers", "Strawberry", "Strawberry Banana"]}]},
+{"id": "9", "name": "ISO Sensation", "brand": "ULT", "cat": "Протеин", "sub": "Изолят", "desc": "Изолят сывороточного протеина с минимумом жиров и углеводов. Высокая степень очистки белка — хороший выбор на сушке и при непереносимости лактозы.", "use": "", "variants": [{"size": "5 lb", "price": 6950, "flavors": ["Banana Ice Cream"]}]},
+{"id": "10", "name": "ShadoWhey Hydrolysate", "brand": "DORIAN YATES", "cat": "Протеин", "sub": "Гидролизат", "desc": "Гидролизованный протеин: белок расщеплён на короткие пептиды и усваивается быстрее обычного концентрата. Хорош сразу после тренировки.", "use": "", "variants": [{"size": "2270 g", "price": 7650, "flavors": ["Chocolate", "Cookies & Cream", "Strawberry-Banana", "Vanilla"]}]},
+{"id": "11", "name": "Anabolic Prime Pro (Premium Hydrolysed)", "brand": "LEVRONE", "cat": "Протеин", "sub": "Гидролизат", "desc": "Гидролизованный протеин: белок расщеплён на короткие пептиды и усваивается быстрее обычного концентрата. Хорош сразу после тренировки.", "use": "", "variants": [{"size": "2 kg", "price": 7000, "flavors": ["Banana-Peach", "Bunty", "Chocolate", "Snikers", "Strawberry"]}]},
+{"id": "12", "name": "Anabolic PM Protein", "brand": "LEVRONE", "cat": "Протеин", "sub": "Казеин и ночной", "desc": "Казеиновый протеин долгого усвоения. Обеспечивает организм аминокислотами несколько часов подряд — оптимален перед сном или в перерывах между приёмами пищи.", "use": "", "variants": [{"size": "1.5 kg", "price": 5900, "flavors": ["Banana-Peach", "Bunty", "Chocolate", "Cookies Cream", "Strawberry-banana", "Strawberry", "Pistachio", "Snikers"]}]},
+{"id": "13", "name": "Casein", "brand": "YLP", "cat": "Протеин", "sub": "Казеин и ночной", "desc": "Казеиновый протеин долгого усвоения. Обеспечивает организм аминокислотами несколько часов подряд — оптимален перед сном или в перерывах между приёмами пищи.", "use": "", "variants": [{"size": "900 g", "price": 2950, "flavors": ["Chocolate"]}]},
+{"id": "14", "name": "Anabolic Pro-Blend 5", "brand": "LEVRONE", "cat": "Протеин", "sub": "Комплексный", "desc": "Многокомпонентный протеин из нескольких видов белка с разной скоростью усвоения — быстрый эффект и продлённое питание мышц одной порцией.", "use": "", "variants": [{"size": "2 kg", "price": 6950, "flavors": ["Banana peach", "Bunty", "Chocolate", "Coffee frappe", "Cookies with Cream", "Snikers", "Strawberry", "Strawberry Banana", "Vanilla caramel", "Pistachio"]}]},
+{"id": "15", "name": "Golden 7 Protein Blend", "brand": "MXL", "cat": "Протеин", "sub": "Комплексный", "desc": "Многокомпонентный протеин из нескольких видов белка с разной скоростью усвоения — быстрый эффект и продлённое питание мышц одной порцией.", "use": "", "variants": [{"size": "5 lb", "price": 7350, "flavors": ["Milk Chocolate", "Strawberry"]}]},
+{"id": "16", "name": "Protein", "brand": "Ospro", "cat": "Протеин", "sub": "Комплексный", "desc": "Многокомпонентный протеин из нескольких видов белка с разной скоростью усвоения — быстрый эффект и продлённое питание мышц одной порцией.", "use": "", "variants": [{"size": "2000 g", "price": 4080, "flavors": ["Strawberry"]}]},
+{"id": "17", "name": "Protein Complex", "brand": "YLP", "cat": "Протеин", "sub": "Комплексный", "desc": "Многокомпонентный протеин из нескольких видов белка с разной скоростью усвоения — быстрый эффект и продлённое питание мышц одной порцией.", "use": "", "variants": [{"size": "1800 g", "price": 4500, "flavors": ["Banana Juicy Melon", "Blueberry Yogurt", "Chocolate Ice Cream", "Frozen Banana", "Nesquik", "Strawberry Yogurt", "Tropical Fruits"]}]},
+{"id": "18", "name": "Game Changer Mass", "brand": "DORIAN YATES", "cat": "Гейнер", "sub": "", "desc": "Гейнер — белково-углеводная смесь для набора массы. Закрывает суточный дефицит калорий и помогает восстановить запасы гликогена после тренировки.", "use": "", "variants": [{"size": "3 kg", "price": 4400, "flavors": ["Chocolate", "Chocolate Nuts", "Cookies Cream", "Pistachio", "Strawberry", "Strawberry Banana", "Vanilla"]}]},
+{"id": "19", "name": "Anabolic Mass", "brand": "LEVRONE", "cat": "Гейнер", "sub": "", "desc": "Гейнер — белково-углеводная смесь для набора массы. Закрывает суточный дефицит калорий и помогает восстановить запасы гликогена после тренировки.", "use": "", "variants": [{"size": "3 kg", "price": 4500, "flavors": ["Banana", "Bunty", "Choco-Oro", "Cookies with Cream", "Pistachio Ice Cream", "Strawberry", "Strawberry Banana"]}, {"size": "7000 g", "price": 7300, "flavors": ["Banana", "Bunty", "Choco-Oro", "Chocolate", "Cookies with Cream", "Pistachio ice cream", "Snikers", "Strawberry", "Strawberry-banana"]}]},
+{"id": "20", "name": "Special Mass Gainer", "brand": "MXL", "cat": "Гейнер", "sub": "", "desc": "Гейнер — белково-углеводная смесь для набора массы. Закрывает суточный дефицит калорий и помогает восстановить запасы гликогена после тренировки.", "use": "", "variants": [{"size": "12 lb", "price": 5500, "flavors": ["Cookies and Cream"]}]},
+{"id": "21", "name": "Gainer", "brand": "Ospro", "cat": "Гейнер", "sub": "", "desc": "Гейнер — белково-углеводная смесь для набора массы. Закрывает суточный дефицит калорий и помогает восстановить запасы гликогена после тренировки.", "use": "", "variants": [{"size": "1000 g", "price": 1750, "flavors": ["Strawberry", "Banana", "Chocolate"]}, {"size": "2700 g", "price": 2900, "flavors": ["Banana"]}, {"size": "5000 g", "price": 4400, "flavors": ["Banana", "Chocolate", "Strawberry"]}]},
+{"id": "22", "name": "Mass Gainer", "brand": "YLP", "cat": "Гейнер", "sub": "", "desc": "Гейнер — белково-углеводная смесь для набора массы. Закрывает суточный дефицит калорий и помогает восстановить запасы гликогена после тренировки.", "use": "", "variants": [{"size": "1000 g", "price": 1750, "flavors": ["Banana", "Strawberry", "Chocolate", "Vanilla ice Cream"]}, {"size": "2700 g", "price": 3300, "flavors": ["Banana", "Chocolate", "Strawberry", "Vanilla ice Cream"]}, {"size": "5000 g", "price": 4500, "flavors": ["Banana", "Chocolate", "Strawberry", "Vanilla ice Cream"]}]},
+{"id": "23", "name": "Ultra Mass", "brand": "YLP", "cat": "Гейнер", "sub": "", "desc": "Гейнер — белково-углеводная смесь для набора массы. Закрывает суточный дефицит калорий и помогает восстановить запасы гликогена после тренировки.", "use": "", "variants": [{"size": "4500 g", "price": 3800, "flavors": ["Banana", "Chocolate", "Nesquik", "Strawberry"]}]},
+{"id": "24", "name": "Creatine", "brand": "DORIAN YATES", "cat": "Креатин", "sub": "Моногидрат", "desc": "Креатин моногидрат — классическая формула для роста силы и мышечной массы. Работает накопительно, эффект заметен при регулярном приёме.", "use": "", "variants": [{"size": "400 g", "price": 2250, "flavors": ["CHERRY", "PEACH", "STRAWBERRY"]}]},
+{"id": "25", "name": "Creatine Monohydrate", "brand": "DORIAN YATES", "cat": "Креатин", "sub": "Моногидрат", "desc": "Креатин моногидрат — классическая формула для роста силы и мышечной массы. Работает накопительно, эффект заметен при регулярном приёме.", "use": "", "variants": [{"size": "150 g", "price": 1450, "flavors": []}, {"size": "300 g", "price": 2000, "flavors": []}]},
+{"id": "26", "name": "GOLD Creatine", "brand": "LEVRONE", "cat": "Креатин", "sub": "Моногидрат", "desc": "Креатин моногидрат — классическая формула для роста силы и мышечной массы. Работает накопительно, эффект заметен при регулярном приёме.", "use": "", "variants": [{"size": "300 g", "price": 2050, "flavors": ["Blue raspberry"]}]},
+{"id": "27", "name": "Creatine Monohydrate", "brand": "Olimp", "cat": "Креатин", "sub": "Моногидрат", "desc": "Креатин моногидрат — классическая формула для роста силы и мышечной массы. Работает накопительно, эффект заметен при регулярном приёме.", "use": "", "variants": [{"size": "250 g", "price": 1950, "flavors": []}, {"size": "550 g", "price": 2850, "flavors": []}]},
+{"id": "28", "name": "Rocky Athletes Creatine", "brand": "Olimp", "cat": "Креатин", "sub": "Моногидрат", "desc": "Креатин моногидрат — классическая формула для роста силы и мышечной массы. Работает накопительно, эффект заметен при регулярном приёме.", "use": "", "variants": [{"size": "200 g", "price": 2300, "flavors": []}, {"size": "250 g", "price": 2000, "flavors": ["Bubble Gum", "Watermelon"]}, {"size": "500 g", "price": 2500, "flavors": ["Без вкуса", "Apple", "Bubble Gum"]}]},
+{"id": "29", "name": "Creatine 100% Monohydrate", "brand": "Ospro", "cat": "Креатин", "sub": "Моногидрат", "desc": "Креатин моногидрат — классическая формула для роста силы и мышечной массы. Работает накопительно, эффект заметен при регулярном приёме.", "use": "", "variants": [{"size": "300 g", "price": 1900, "flavors": []}]},
+{"id": "30", "name": "Creatine Monohydrate 100% Micronized", "brand": "ULT", "cat": "Креатин", "sub": "Моногидрат", "desc": "Креатин моногидрат — классическая формула для роста силы и мышечной массы. Работает накопительно, эффект заметен при регулярном приёме.", "use": "", "variants": [{"size": "300 g", "price": 1850, "flavors": ["Fruit Punch", "Orange"]}]},
+{"id": "31", "name": "Creatine 100% Monohydrate", "brand": "YLP", "cat": "Креатин", "sub": "Моногидрат", "desc": "Креатин моногидрат — классическая формула для роста силы и мышечной массы. Работает накопительно, эффект заметен при регулярном приёме.", "use": "", "variants": [{"size": "300 g", "price": 1600, "flavors": ["Green Apple", "Orange", "Pineapple"]}]},
+{"id": "32", "name": "Kre-Alkalyn 2500 Mega Caps", "brand": "Olimp", "cat": "Креатин", "sub": "Капсулы и таблетки", "desc": "Креатин в капсулах — удобная дозировка без необходимости отмерять порошок, включая формы с улучшенной стабильностью в желудке.", "use": "", "variants": [{"size": "120 caps", "price": 4000, "flavors": []}]},
+{"id": "33", "name": "Creatine 1250 Mega Caps", "brand": "Olimp", "cat": "Креатин", "sub": "Капсулы и таблетки", "desc": "Креатин в капсулах — удобная дозировка без необходимости отмерять порошок, включая формы с улучшенной стабильностью в желудке.", "use": "", "variants": [{"size": "120 caps", "price": 2100, "flavors": []}, {"size": "400 caps", "price": 3450, "flavors": []}]},
+{"id": "34", "name": "TCM 1100 Mega Caps", "brand": "Olimp", "cat": "Креатин", "sub": "Капсулы и таблетки", "desc": "Креатин в капсулах — удобная дозировка без необходимости отмерять порошок, включая формы с улучшенной стабильностью в желудке.", "use": "", "variants": [{"size": "120 caps", "price": 2200, "flavors": []}]},
+{"id": "35", "name": "100% Creatine Capsules 900 mg", "brand": "ULT", "cat": "Креатин", "sub": "Капсулы и таблетки", "desc": "Креатин в капсулах — удобная дозировка без необходимости отмерять порошок, включая формы с улучшенной стабильностью в желудке.", "use": "", "variants": [{"size": "200 caps", "price": 2950, "flavors": []}]},
+{"id": "36", "name": "Crea-Fast 500 mg", "brand": "Fuel-Up", "cat": "Креатин", "sub": "Комплексные формулы", "desc": "Комплексный креатин с дополнительными компонентами (аминокислоты, транспортные системы) для усиления силовых показателей и объёма мышц.", "use": "", "variants": [{"size": "60 vcaps", "price": 1550, "flavors": []}]},
+{"id": "37", "name": "Crea-Up 700 mg", "brand": "Fuel-Up", "cat": "Креатин", "sub": "Комплексные формулы", "desc": "Комплексный креатин с дополнительными компонентами (аминокислоты, транспортные системы) для усиления силовых показателей и объёма мышц.", "use": "", "variants": [{"size": "240 vcaps", "price": 2160, "flavors": []}]},
+{"id": "38", "name": "Anabolic Crea 10", "brand": "LEVRONE", "cat": "Креатин", "sub": "Комплексные формулы", "desc": "Комплексный креатин с дополнительными компонентами (аминокислоты, транспортные системы) для усиления силовых показателей и объёма мышц.", "use": "", "variants": [{"size": "207 g", "price": 2300, "flavors": ["Orange Mango"]}]},
+{"id": "39", "name": "Levro Crea", "brand": "LEVRONE", "cat": "Креатин", "sub": "Комплексные формулы", "desc": "Комплексный креатин с дополнительными компонентами (аминокислоты, транспортные системы) для усиления силовых показателей и объёма мышц.", "use": "", "variants": [{"size": "240 g", "price": 1900, "flavors": ["Orange-Mango"]}]},
+{"id": "40", "name": "LevroLegendary Test Creatine", "brand": "LEVRONE", "cat": "Креатин", "sub": "Комплексные формулы", "desc": "Комплексный креатин с дополнительными компонентами (аминокислоты, транспортные системы) для усиления силовых показателей и объёма мышц.", "use": "", "variants": [{"size": "255 g", "price": 2450, "flavors": ["Exotic", "Orange-Mango"]}]},
+{"id": "41", "name": "Creatine XPlode Powder", "brand": "Olimp", "cat": "Креатин", "sub": "Комплексные формулы", "desc": "Комплексный креатин с дополнительными компонентами (аминокислоты, транспортные системы) для усиления силовых показателей и объёма мышц.", "use": "", "variants": [{"size": "500 g", "price": 2850, "flavors": ["Lemon (bag)", "Orange (bag)", "Grapefruit"]}]},
+{"id": "42", "name": "Crea Max 1000 mg", "brand": "ULT", "cat": "Креатин", "sub": "Комплексные формулы", "desc": "Комплексный креатин с дополнительными компонентами (аминокислоты, транспортные системы) для усиления силовых показателей и объёма мышц.", "use": "", "variants": [{"size": "144 caps", "price": 2350, "flavors": []}]},
+{"id": "43", "name": "Crea Max Powder (2.2 lb)", "brand": "ULT", "cat": "Креатин", "sub": "Комплексные формулы", "desc": "Комплексный креатин с дополнительными компонентами (аминокислоты, транспортные системы) для усиления силовых показателей и объёма мышц.", "use": "", "variants": [{"size": "1 kg", "price": 3750, "flavors": ["Fruit Punch"]}]},
+{"id": "44", "name": "HIT BCAA 10:1:1", "brand": "DORIAN YATES", "cat": "Аминокислоты", "sub": "BCAA", "desc": "BCAA — незаменимые аминокислоты с разветвлёнными цепями. Снижают разрушение мышц во время нагрузки и ускоряют восстановление.", "use": "", "variants": [{"size": "400 g", "price": 2650, "flavors": ["MANGO", "ORANGE", "PEACH", "PINEAPPLE", "STRAWBERRY"]}]},
+{"id": "45", "name": "BCAA 4:1:1 + Glutamine", "brand": "DORIAN YATES", "cat": "Аминокислоты", "sub": "BCAA", "desc": "BCAA — незаменимые аминокислоты с разветвлёнными цепями. Снижают разрушение мышц во время нагрузки и ускоряют восстановление.", "use": "", "variants": [{"size": "450 g", "price": 2850, "flavors": ["Cherry", "Peach", "Strawberry"]}]},
+{"id": "46", "name": "Anabolic Ice BCAA", "brand": "LEVRONE", "cat": "Аминокислоты", "sub": "BCAA", "desc": "BCAA — незаменимые аминокислоты с разветвлёнными цепями. Снижают разрушение мышц во время нагрузки и ускоряют восстановление.", "use": "", "variants": [{"size": "375 g", "price": 2650, "flavors": ["Icy citrus-peach", "Icy orange-mango"]}]},
+{"id": "47", "name": "GOLD BCAA 2:1:1", "brand": "LEVRONE", "cat": "Аминокислоты", "sub": "BCAA", "desc": "BCAA — незаменимые аминокислоты с разветвлёнными цепями. Снижают разрушение мышц во время нагрузки и ускоряют восстановление.", "use": "", "variants": [{"size": "375 g", "price": 2650, "flavors": ["Blackberry Pineapple", "Blue raspberry", "Fruit Massage", "Orange"]}]},
+{"id": "48", "name": "BCAA 1100 Mega Caps", "brand": "Olimp", "cat": "Аминокислоты", "sub": "BCAA", "desc": "BCAA — незаменимые аминокислоты с разветвлёнными цепями. Снижают разрушение мышц во время нагрузки и ускоряют восстановление.", "use": "", "variants": [{"size": "300 caps", "price": 3100, "flavors": []}]},
+{"id": "49", "name": "BCAA 4:1:1 XPlode Powder", "brand": "Olimp", "cat": "Аминокислоты", "sub": "BCAA", "desc": "BCAA — незаменимые аминокислоты с разветвлёнными цепями. Снижают разрушение мышц во время нагрузки и ускоряют восстановление.", "use": "", "variants": [{"size": "500 g", "price": 3500, "flavors": ["Fruit Punch", "Pear"]}]},
+{"id": "50", "name": "BCAA Energy XPlode Powder", "brand": "Olimp", "cat": "Аминокислоты", "sub": "BCAA", "desc": "BCAA — незаменимые аминокислоты с разветвлёнными цепями. Снижают разрушение мышц во время нагрузки и ускоряют восстановление.", "use": "", "variants": [{"size": "500 g", "price": 2950, "flavors": ["Cola"]}]},
+{"id": "51", "name": "BCAA XPlode Powder", "brand": "Olimp", "cat": "Аминокислоты", "sub": "BCAA", "desc": "BCAA — незаменимые аминокислоты с разветвлёнными цепями. Снижают разрушение мышц во время нагрузки и ускоряют восстановление.", "use": "", "variants": [{"size": "280 g", "price": 2500, "flavors": ["Cola"]}, {"size": "500 g", "price": 2950, "flavors": ["Cola", "Fruit Punch", "Ice Tea Peach", "Mango", "Orange", "Pineapple", "Strawberry"]}]},
+{"id": "52", "name": "BCAA 12,000 Powder", "brand": "ULT", "cat": "Аминокислоты", "sub": "BCAA", "desc": "BCAA — незаменимые аминокислоты с разветвлёнными цепями. Снижают разрушение мышц во время нагрузки и ускоряют восстановление.", "use": "", "variants": [{"size": "30 serv", "price": 2150, "flavors": ["Blue Raspberry", "Fruit Punch", "Grape", "Lemon Lime", "Orange", "Pink Lemonade"]}, {"size": "60 serv", "price": 2500, "flavors": ["Blue Raspberry", "Cherry", "Fruit Punch", "Grape", "Lemon Lime", "Pink Limonade", "Ruby Red Candy", "Watermelon"]}]},
+{"id": "53", "name": "HIT EAA Amino Acid Complex", "brand": "DORIAN YATES", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "360 g", "price": 2650, "flavors": ["Blood Orange", "Bubble Gum", "Cola"]}]},
+{"id": "54", "name": "Anabolic Beef Amino", "brand": "LEVRONE", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "600 tabs", "price": 3150, "flavors": []}]},
+{"id": "55", "name": "Anabolic ICE EAA", "brand": "LEVRONE", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "420 g", "price": 2550, "flavors": ["Icy mango-passion fruit"]}]},
+{"id": "56", "name": "Anabolic Ice EAA", "brand": "LEVRONE", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "210 g", "price": 2300, "flavors": ["Icy mango-passion fruit"]}]},
+{"id": "57", "name": "GOLD Amino Chewables", "brand": "LEVRONE", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "330 tabs", "price": 2400, "flavors": ["Chocolate", "Strawberry", "Vanilla"]}]},
+{"id": "58", "name": "Amino Magic", "brand": "MXL", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "1000 ml", "price": 2900, "flavors": ["Orange", "Red Bull - Energy"]}]},
+{"id": "59", "name": "Amino Pro 9000 Gold Chicken", "brand": "Olimp", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "300 tabs", "price": 4000, "flavors": []}]},
+{"id": "60", "name": "Anabolic Amino 5500 Mega Caps", "brand": "Olimp", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "400 caps", "price": 3850, "flavors": []}]},
+{"id": "61", "name": "Anabolic Amino 9000 Mega Tabs", "brand": "Olimp", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "300 tabs", "price": 4800, "flavors": []}]},
+{"id": "62", "name": "Amino Gold", "brand": "ULT", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "250 tabs", "price": 2350, "flavors": []}, {"size": "325 tabs", "price": 3200, "flavors": []}]},
+{"id": "63", "name": "Amino Softgels", "brand": "ULT", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "300 softgels", "price": 3300, "flavors": []}]},
+{"id": "64", "name": "Xtreme Amino Ассортимент: Vanilla; Strawberry; Chocolate; Banana", "brand": "ULT", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "330 tabs", "price": 3300, "flavors": ["ассорти: Vanilla, Strawberry, Chocolate, Banana"]}]},
+{"id": "65", "name": "Amino Acid Complex", "brand": "YLP", "cat": "Аминокислоты", "sub": "EAA и комплексные аминокислоты", "desc": "Полный комплекс незаменимых аминокислот (EAA) — строительный материал для мышц, который организм не производит сам. Подходит и во время, и после тренировки.", "use": "", "variants": [{"size": "300 tabs", "price": 2200, "flavors": []}]},
+{"id": "66", "name": "The Glutamine Recovery", "brand": "DORIAN YATES", "cat": "Аминокислоты", "sub": "Глутамин", "desc": "L-глутамин — аминокислота для восстановления мышц и поддержки иммунитета при интенсивных нагрузках.", "use": "", "variants": [{"size": "300 гр", "price": 2500, "flavors": []}]},
+{"id": "67", "name": "Anabolic Glutamine", "brand": "LEVRONE", "cat": "Аминокислоты", "sub": "Глутамин", "desc": "L-глутамин — аминокислота для восстановления мышц и поддержки иммунитета при интенсивных нагрузках.", "use": "", "variants": [{"size": "300 g", "price": 2200, "flavors": []}]},
+{"id": "68", "name": "Glutamine 1400 Mega Caps", "brand": "Olimp", "cat": "Аминокислоты", "sub": "Глутамин", "desc": "L-глутамин — аминокислота для восстановления мышц и поддержки иммунитета при интенсивных нагрузках.", "use": "", "variants": [{"size": "120 caps", "price": 2350, "flavors": []}]},
+{"id": "69", "name": "Rocky Athletes Glutamine", "brand": "Olimp", "cat": "Аминокислоты", "sub": "Глутамин", "desc": "L-глутамин — аминокислота для восстановления мышц и поддержки иммунитета при интенсивных нагрузках.", "use": "", "variants": [{"size": "250 g", "price": 2300, "flavors": []}]},
+{"id": "70", "name": "L-Glutamine 50 serv", "brand": "Ospro", "cat": "Аминокислоты", "sub": "Глутамин", "desc": "L-глутамин — аминокислота для восстановления мышц и поддержки иммунитета при интенсивных нагрузках.", "use": "", "variants": [{"size": "300 g", "price": 1850, "flavors": []}]},
+{"id": "71", "name": "Gluta Pure", "brand": "ULT", "cat": "Аминокислоты", "sub": "Глутамин", "desc": "L-глутамин — аминокислота для восстановления мышц и поддержки иммунитета при интенсивных нагрузках.", "use": "", "variants": [{"size": "400 g", "price": 2350, "flavors": []}]},
+{"id": "72", "name": "L-Glutamine 60 serv", "brand": "YLP", "cat": "Аминокислоты", "sub": "Глутамин", "desc": "L-глутамин — аминокислота для восстановления мышц и поддержки иммунитета при интенсивных нагрузках.", "use": "", "variants": [{"size": "300 g", "price": 1900, "flavors": []}]},
+{"id": "73", "name": "LevroLegendary Citrulline", "brand": "LEVRONE", "cat": "Аминокислоты", "sub": "Цитруллин", "desc": "L-цитруллин малат улучшает мышечный кровоток и пампинг, снижает утомляемость на высокообъёмных тренировках.", "use": "", "variants": [{"size": "300 g", "price": 2450, "flavors": ["Fruit Massage"]}]},
+{"id": "74", "name": "L-Citrulline Malate", "brand": "YLP", "cat": "Аминокислоты", "sub": "Цитруллин", "desc": "L-цитруллин малат улучшает мышечный кровоток и пампинг, снижает утомляемость на высокообъёмных тренировках.", "use": "", "variants": [{"size": "250 g", "price": 1950, "flavors": []}]},
+{"id": "75", "name": "LevroLegendary Arginine AKG", "brand": "LEVRONE", "cat": "Аминокислоты", "sub": "Аргинин", "desc": "Аргинин (в т.ч. в форме AAKG) — донатор азота, участвует в выработке оксида азота и улучшении кровенаполнения мышц во время тренировки.", "use": "", "variants": [{"size": "300 g", "price": 2500, "flavors": ["Blue raspberry", "Fruit Massage"]}]},
+{"id": "76", "name": "AAKG 1250 Extreme Mega Caps", "brand": "Olimp", "cat": "Аминокислоты", "sub": "Аргинин", "desc": "Аргинин (в т.ч. в форме AAKG) — донатор азота, участвует в выработке оксида азота и улучшении кровенаполнения мышц во время тренировки.", "use": "", "variants": [{"size": "120 caps", "price": 2550, "flavors": []}]},
+{"id": "77", "name": "Argipower 1500 Mega Caps", "brand": "Olimp", "cat": "Аминокислоты", "sub": "Аргинин", "desc": "Аргинин (в т.ч. в форме AAKG) — донатор азота, участвует в выработке оксида азота и улучшении кровенаполнения мышц во время тренировки.", "use": "", "variants": [{"size": "120 caps", "price": 2200, "flavors": []}]},
+{"id": "78", "name": "L-Arginine 5000", "brand": "YLP", "cat": "Аминокислоты", "sub": "Аргинин", "desc": "Аргинин (в т.ч. в форме AAKG) — донатор азота, участвует в выработке оксида азота и улучшении кровенаполнения мышц во время тренировки.", "use": "", "variants": [{"size": "300 g", "price": 2050, "flavors": []}]},
+{"id": "79", "name": "L-CARNITINE XL", "brand": "DORIAN YATES", "cat": "Аминокислоты", "sub": "L-карнитин", "desc": "L-карнитин помогает транспортировать жирные кислоты к митохондриям для использования в качестве энергии — популярен при похудении и на кардио.", "use": "", "variants": [{"size": "1000 ml", "price": 2700, "flavors": ["Cherry", "Mango"]}]},
+{"id": "80", "name": "Acetyl-L-Carnitine 500 mg", "brand": "Fuel-Up", "cat": "Аминокислоты", "sub": "L-карнитин", "desc": "L-карнитин помогает транспортировать жирные кислоты к митохондриям для использования в качестве энергии — популярен при похудении и на кардио.", "use": "", "variants": [{"size": "60 vcaps", "price": 1800, "flavors": []}]},
+{"id": "81", "name": "GOLD L-Carnitine 1000", "brand": "LEVRONE", "cat": "Аминокислоты", "sub": "L-карнитин", "desc": "L-карнитин помогает транспортировать жирные кислоты к митохондриям для использования в качестве энергии — популярен при похудении и на кардио.", "use": "", "variants": [{"size": "100 tabs", "price": 2200, "flavors": []}]},
+{"id": "82", "name": "L-Carnitine / 3000 mg / 14 x 25", "brand": "MXL", "cat": "Аминокислоты", "sub": "L-карнитин", "desc": "L-карнитин помогает транспортировать жирные кислоты к митохондриям для использования в качестве энергии — популярен при похудении и на кардио.", "use": "", "variants": [{"size": "", "price": 2450, "flavors": ["Strawberry Kiwi"]}]},
+{"id": "83", "name": "L-Carnitine + Caffeine 5000 mg", "brand": "YLP", "cat": "Аминокислоты", "sub": "L-карнитин", "desc": "L-карнитин помогает транспортировать жирные кислоты к митохондриям для использования в качестве энергии — популярен при похудении и на кардио. С кофеином — дополнительно даёт энергетический подъём перед тренировкой.", "use": "", "variants": [{"size": "500 ml", "price": 2150, "flavors": ["Pineapple"]}, {"size": "1000 ml", "price": 2650, "flavors": ["Apple", "Pineapple"]}]},
+{"id": "84", "name": "L-Carnitine 2500 mg", "brand": "YLP", "cat": "Аминокислоты", "sub": "L-карнитин", "desc": "L-карнитин помогает транспортировать жирные кислоты к митохондриям для использования в качестве энергии — популярен при похудении и на кардио.", "use": "", "variants": [{"size": "500 ml", "price": 1950, "flavors": ["Raspberry"]}, {"size": "1000 ml", "price": 2350, "flavors": ["Mango"]}]},
+{"id": "85", "name": "L-Carnitine 3100 mg", "brand": "YLP", "cat": "Аминокислоты", "sub": "L-карнитин", "desc": "L-карнитин помогает транспортировать жирные кислоты к митохондриям для использования в качестве энергии — популярен при похудении и на кардио.", "use": "", "variants": [{"size": "500 ml", "price": 1950, "flavors": ["Cherry", "Strawberry"]}, {"size": "1000 ml", "price": 2350, "flavors": ["Apple", "Tropical Mix"]}]},
+{"id": "86", "name": "L-Carnitine 3500 mg", "brand": "YLP", "cat": "Аминокислоты", "sub": "L-карнитин", "desc": "L-карнитин помогает транспортировать жирные кислоты к митохондриям для использования в качестве энергии — популярен при похудении и на кардио.", "use": "", "variants": [{"size": "14х25 ml", "price": 2000, "flavors": ["Mojito"]}]},
+{"id": "87", "name": "L-Carnitine Attack 3600 mg", "brand": "YLP", "cat": "Аминокислоты", "sub": "L-карнитин", "desc": "L-карнитин помогает транспортировать жирные кислоты к митохондриям для использования в качестве энергии — популярен при похудении и на кардио.", "use": "", "variants": [{"size": "1000 ml", "price": 2450, "flavors": ["Cherry & Coffee"]}]},
+{"id": "88", "name": "Beta Alanine Carno Rush", "brand": "Olimp", "cat": "Аминокислоты", "sub": "Бета-аланин", "desc": "Бета-аланин повышает буферную ёмкость мышц, отдаляя момент закисления — помогает выдерживать больше повторений в подходе.", "use": "", "variants": [{"size": "80 tabs", "price": 1950, "flavors": []}]},
+{"id": "89", "name": "Beta Alanine XPlode", "brand": "Olimp", "cat": "Аминокислоты", "sub": "Бета-аланин", "desc": "Бета-аланин повышает буферную ёмкость мышц, отдаляя момент закисления — помогает выдерживать больше повторений в подходе.", "use": "", "variants": [{"size": "250 g", "price": 2550, "flavors": ["Orange"]}]},
+{"id": "90", "name": "Beta-Alanine 50 serv", "brand": "YLP", "cat": "Аминокислоты", "sub": "Бета-аланин", "desc": "Бета-аланин повышает буферную ёмкость мышц, отдаляя момент закисления — помогает выдерживать больше повторений в подходе.", "use": "", "variants": [{"size": "250 g", "price": 1800, "flavors": []}]},
+{"id": "91", "name": "L-Tyrosine 500 mg", "brand": "Fuel-Up", "cat": "Аминокислоты", "sub": "Прочие аминокислоты", "desc": "Аминокислотная добавка для восстановления и питания мышц.", "use": "", "variants": [{"size": "120 vcaps", "price": 1800, "flavors": []}]},
+{"id": "92", "name": "L-Tyrosine 500 mg", "brand": "MXL", "cat": "Аминокислоты", "sub": "Прочие аминокислоты", "desc": "Аминокислотная добавка для восстановления и питания мышц.", "use": "", "variants": [{"size": "100 vcaps", "price": 2000, "flavors": []}]},
+{"id": "93", "name": "Lysine 500 mg", "brand": "MXL", "cat": "Аминокислоты", "sub": "Прочие аминокислоты", "desc": "Аминокислотная добавка для восстановления и питания мышц.", "use": "", "variants": [{"size": "100 vcaps", "price": 1750, "flavors": []}]},
+{"id": "94", "name": "HMB 1250 mg", "brand": "Olimp", "cat": "HMB и таурин", "sub": "", "desc": "HMB замедляет распад мышечного белка при интенсивных тренировках, помогая сохранять мышечную массу на сушке и при высоких нагрузках.", "use": "", "variants": [{"size": "120 caps", "price": 2850, "flavors": []}]},
+{"id": "95", "name": "HMB XPlode", "brand": "Olimp", "cat": "HMB и таурин", "sub": "", "desc": "HMB замедляет распад мышечного белка при интенсивных тренировках, помогая сохранять мышечную массу на сушке и при высоких нагрузках.", "use": "", "variants": [{"size": "250 g", "price": 2950, "flavors": ["Orange", "Pineapple"]}]},
+{"id": "96", "name": "Taurine", "brand": "Olimp", "cat": "HMB и таурин", "sub": "", "desc": "Таурин — аминокислота, поддерживающая работу нервной системы и водно-солевой баланс, часто входит в состав предтренировочных формул.", "use": "", "variants": [{"size": "120 caps", "price": 1950, "flavors": []}]},
+{"id": "97", "name": "Anabolic BCAA Hydration & Electrolytes", "brand": "LEVRONE", "cat": "Изотоники и электролиты", "sub": "", "desc": "Изотоник с электролитами восполняет потери жидкости и солей при длительной или интенсивной нагрузке, поддерживает гидратацию и работоспособность.", "use": "", "variants": [{"size": "375 g", "price": 2750, "flavors": ["Blue raspberry", "Exotic", "Orange-Mango"]}]},
+{"id": "98", "name": "ISO Plus + L-Carnitine", "brand": "Olimp", "cat": "Изотоники и электролиты", "sub": "", "desc": "Изотоник с электролитами восполняет потери жидкости и солей при длительной или интенсивной нагрузке, поддерживает гидратацию и работоспособность.", "use": "", "variants": [{"size": "700 g", "price": 2250, "flavors": ["Cola", "Ice Tea", "Orange", "Tropic Blue"]}, {"size": "1505 g", "price": 2650, "flavors": ["Cola", "Orange", "Tropic Blue"]}]},
+{"id": "99", "name": "ISO Plus + L-Carnitine Lemon", "brand": "Olimp", "cat": "Изотоники и электролиты", "sub": "", "desc": "Изотоник с электролитами восполняет потери жидкости и солей при длительной или интенсивной нагрузке, поддерживает гидратацию и работоспособность.", "use": "", "variants": [{"size": "1505 g", "price": 2650, "flavors": []}]},
+{"id": "100", "name": "BCAA + Electrolytes 390g", "brand": "YLP", "cat": "Изотоники и электролиты", "sub": "", "desc": "Изотоник с электролитами восполняет потери жидкости и солей при длительной или интенсивной нагрузке, поддерживает гидратацию и работоспособность.", "use": "", "variants": [{"size": "60 serv", "price": 2500, "flavors": ["Blue Raspberry", "Ice cherry", "Ice mojito", "Orange"]}]},
+{"id": "101", "name": "CLA 1000MG", "brand": "DORIAN YATES", "cat": "Жиросжигатели (похудение)", "sub": "", "desc": "Добавка для контроля веса — поддерживает метаболизм и расход энергии на фоне тренировок и диеты.", "use": "", "variants": [{"size": "90 softgels", "price": 1950, "flavors": []}]},
+{"id": "102", "name": "Slender Cellulite and Fat Burner for Women", "brand": "DORIAN YATES", "cat": "Жиросжигатели (похудение)", "sub": "", "desc": "Добавка для контроля веса — поддерживает метаболизм и расход энергии на фоне тренировок и диеты.", "use": "", "variants": [{"size": "450 g", "price": 2950, "flavors": ["Raspberry"]}]},
+{"id": "103", "name": "Blackbombs", "brand": "DORIAN YATES", "cat": "Жиросжигатели (похудение)", "sub": "", "desc": "Добавка для контроля веса — поддерживает метаболизм и расход энергии на фоне тренировок и диеты.", "use": "", "variants": [{"size": "60 tabs", "price": 2650, "flavors": []}]},
+{"id": "104", "name": "Berberine HCL 500 mg", "brand": "Fuel-Up", "cat": "Жиросжигатели (похудение)", "sub": "", "desc": "Добавка для контроля веса — поддерживает метаболизм и расход энергии на фоне тренировок и диеты.", "use": "", "variants": [{"size": "60 vcaps", "price": 2350, "flavors": []}]},
+{"id": "105", "name": "Wellness Series CLA 3000", "brand": "LEVRONE", "cat": "Жиросжигатели (похудение)", "sub": "", "desc": "Добавка для контроля веса — поддерживает метаболизм и расход энергии на фоне тренировок и диеты.", "use": "", "variants": [{"size": "90 caps", "price": 1900, "flavors": []}]},
+{"id": "106", "name": "Thermo Speed Extreme", "brand": "Olimp", "cat": "Жиросжигатели (похудение)", "sub": "", "desc": "Термогенный жиросжигатель ускоряет метаболизм и повышает расход энергии — используется как часть программы похудения вместе с тренировками и диетой.", "use": "", "variants": [{"size": "120 кап", "price": 2500, "flavors": []}]},
+{"id": "107", "name": "Slim Complex", "brand": "YLP", "cat": "Жиросжигатели (похудение)", "sub": "", "desc": "Добавка для контроля веса — поддерживает метаболизм и расход энергии на фоне тренировок и диеты.", "use": "", "variants": [{"size": "90 caps", "price": 1850, "flavors": []}]},
+{"id": "108", "name": "BLOOD&GUTS", "brand": "DORIAN YATES", "cat": "Предтренировочные комплексы", "sub": "", "desc": "Предтренировочный комплекс с кофеином и стимулирующими компонентами — заряжает энергией, фокусом и выносливостью перед силовой или кардио-тренировкой.", "use": "", "variants": [{"size": "380 g", "price": 2950, "flavors": ["BLUEBERRY", "BUBBLE GUM", "Cola", "MANGO", "MOJITO", "PEAR-KIWI", "STRAWBERRY"]}]},
+{"id": "109", "name": "M6TEEN PRE Workout Shot", "brand": "DORIAN YATES", "cat": "Предтренировочные комплексы", "sub": "", "desc": "Предтренировочный комплекс с кофеином и стимулирующими компонентами — заряжает энергией, фокусом и выносливостью перед силовой или кардио-тренировкой.", "use": "", "variants": [{"size": "12X60 ml", "price": 2400, "flavors": ["BLUEBERRY", "PEACH"]}]},
+{"id": "110", "name": "Scatterbrain", "brand": "LEVRONE", "cat": "Предтренировочные комплексы", "sub": "", "desc": "Предтренировочный комплекс с кофеином и стимулирующими компонентами — заряжает энергией, фокусом и выносливостью перед силовой или кардио-тренировкой.", "use": "", "variants": [{"size": "270 g", "price": 2600, "flavors": ["Blue raspberry", "Citrus Peach", "Fruit Massage", "Orange-Mango"]}]},
+{"id": "111", "name": "Amok", "brand": "Olimp", "cat": "Предтренировочные комплексы", "sub": "", "desc": "Предтренировочный комплекс с кофеином и стимулирующими компонентами — заряжает энергией, фокусом и выносливостью перед силовой или кардио-тренировкой.", "use": "", "variants": [{"size": "60 caps", "price": 1950, "flavors": []}]},
+{"id": "112", "name": "Extreme Speed Shot", "brand": "Olimp", "cat": "Предтренировочные комплексы", "sub": "", "desc": "Предтренировочный комплекс с кофеином и стимулирующими компонентами — заряжает энергией, фокусом и выносливостью перед силовой или кардио-тренировкой.", "use": "", "variants": [{"size": "9 x 25 ml", "price": 2350, "flavors": []}]},
+{"id": "113", "name": "Pre-Workout Pro 300g", "brand": "YLP", "cat": "Предтренировочные комплексы", "sub": "", "desc": "Предтренировочный комплекс с кофеином и стимулирующими компонентами — заряжает энергией, фокусом и выносливостью перед силовой или кардио-тренировкой.", "use": "", "variants": [{"size": "50 serv", "price": 2500, "flavors": ["Blackberry", "Grape", "Green Apple", "Orange", "Tropical mix"]}]},
+{"id": "114", "name": "Shaaboom ICE Pump", "brand": "LEVRONE", "cat": "Пампинг и донаторы азота", "sub": "", "desc": "Донатор оксида азота для пампинг-эффекта: усиливает приток крови к мышцам, визуальный объём и питание тканей во время тренировки.", "use": "", "variants": [{"size": "463 g", "price": 2650, "flavors": ["Icy citrus-peach", "Icy dragon fruit", "Icy mango-passion fruit", "Icy orange-mango"]}]},
+{"id": "115", "name": "Shaaboom Energy Pump", "brand": "LEVRONE", "cat": "Пампинг и донаторы азота", "sub": "", "desc": "Донатор оксида азота для пампинг-эффекта: усиливает приток крови к мышцам, визуальный объём и питание тканей во время тренировки.", "use": "", "variants": [{"size": "320 ml", "price": 200, "flavors": ["Grapefruit-Lime", "Orange Cherry", "Fruit punch"]}]},
+{"id": "116", "name": "Pump XPlode", "brand": "Olimp", "cat": "Пампинг и донаторы азота", "sub": "", "desc": "Донатор оксида азота для пампинг-эффекта: усиливает приток крови к мышцам, визуальный объём и питание тканей во время тренировки.", "use": "", "variants": [{"size": "300 g", "price": 2800, "flavors": ["Cola"]}]},
+{"id": "117", "name": "PUMP-3D 240g", "brand": "YLP", "cat": "Пампинг и донаторы азота", "sub": "", "desc": "Донатор оксида азота для пампинг-эффекта: усиливает приток крови к мышцам, визуальный объём и питание тканей во время тренировки.", "use": "", "variants": [{"size": "30 serv", "price": 1700, "flavors": ["Green Apple", "Ice Cherry", "Tropic Thunder"]}]},
+{"id": "118", "name": "Caffeine 200", "brand": "MXL", "cat": "Кофеин и гуарана", "sub": "", "desc": "Источник кофеина для быстрого повышения концентрации и энергии перед тренировкой или учёбой/работой.", "use": "", "variants": [{"size": "100 tabs", "price": 1650, "flavors": []}]},
+{"id": "119", "name": "Caffeine Kick", "brand": "Olimp", "cat": "Кофеин и гуарана", "sub": "", "desc": "Источник кофеина для быстрого повышения концентрации и энергии перед тренировкой или учёбой/работой.", "use": "", "variants": [{"size": "60 caps", "price": 1550, "flavors": []}]},
+{"id": "120", "name": "Guarana 2000", "brand": "Ospro", "cat": "Кофеин и гуарана", "sub": "", "desc": "Источник кофеина для быстрого повышения концентрации и энергии перед тренировкой или учёбой/работой.", "use": "", "variants": [{"size": "20 x 60 ml", "price": 2350, "flavors": ["Mango", "Strawberry"]}]},
+{"id": "121", "name": "Guarana 2500", "brand": "YLP", "cat": "Кофеин и гуарана", "sub": "", "desc": "Источник кофеина для быстрого повышения концентрации и энергии перед тренировкой или учёбой/работой.", "use": "", "variants": [{"size": "14x25 ml", "price": 2050, "flavors": ["Cherry", "Pineapple", "Watermelon"]}]},
+{"id": "122", "name": "Testoboost", "brand": "DORIAN YATES", "cat": "Тестобустеры и мужское здоровье", "sub": "", "desc": "Добавка для поддержки естественного уровня тестостерона и мужского здоровья — часто используется в периоды силовых нагрузок.", "use": "", "variants": [{"size": "270 g", "price": 2100, "flavors": ["Grape"]}]},
+{"id": "123", "name": "Tribulus 1000 mg", "brand": "Fuel-Up", "cat": "Тестобустеры и мужское здоровье", "sub": "", "desc": "Добавка для поддержки естественного уровня тестостерона и мужского здоровья — часто используется в периоды силовых нагрузок.", "use": "", "variants": [{"size": "90 tabs", "price": 2050, "flavors": []}]},
+{"id": "124", "name": "DAA Xtreme Prolact Block", "brand": "Olimp", "cat": "Тестобустеры и мужское здоровье", "sub": "", "desc": "Добавка для поддержки естественного уровня тестостерона и мужского здоровья — часто используется в периоды силовых нагрузок.", "use": "", "variants": [{"size": "60 tabs", "price": 2150, "flavors": []}]},
+{"id": "125", "name": "T-100 Hardcore", "brand": "Olimp", "cat": "Тестобустеры и мужское здоровье", "sub": "", "desc": "Добавка для поддержки естественного уровня тестостерона и мужского здоровья — часто используется в периоды силовых нагрузок.", "use": "", "variants": [{"size": "120 caps", "price": 3700, "flavors": []}]},
+{"id": "126", "name": "Testoxeed", "brand": "Olimp", "cat": "Тестобустеры и мужское здоровье", "sub": "", "desc": "Добавка для поддержки естественного уровня тестостерона и мужского здоровья — часто используется в периоды силовых нагрузок.", "use": "", "variants": [{"size": "120 caps", "price": 3650, "flavors": []}]},
+{"id": "127", "name": "Tribusteron 60", "brand": "Olimp", "cat": "Тестобустеры и мужское здоровье", "sub": "", "desc": "Добавка для поддержки естественного уровня тестостерона и мужского здоровья — часто используется в периоды силовых нагрузок.", "use": "", "variants": [{"size": "120 caps", "price": 2400, "flavors": []}]},
+{"id": "128", "name": "Tribulus 750 mg", "brand": "ULT", "cat": "Тестобустеры и мужское здоровье", "sub": "", "desc": "Добавка для поддержки естественного уровня тестостерона и мужского здоровья — часто используется в периоды силовых нагрузок.", "use": "", "variants": [{"size": "90 caps", "price": 2150, "flavors": []}]},
+{"id": "129", "name": "Ecdysterone Testosterone Booster", "brand": "YLP", "cat": "Тестобустеры и мужское здоровье", "sub": "", "desc": "Добавка для поддержки естественного уровня тестостерона и мужского здоровья — часто используется в периоды силовых нагрузок.", "use": "", "variants": [{"size": "60 caps", "price": 2200, "flavors": []}]},
+{"id": "130", "name": "Tribulus+Zinc", "brand": "YLP", "cat": "Тестобустеры и мужское здоровье", "sub": "", "desc": "Добавка для поддержки естественного уровня тестостерона и мужского здоровья — часто используется в периоды силовых нагрузок.", "use": "", "variants": [{"size": "60 caps", "price": 1650, "flavors": []}]},
+{"id": "131", "name": "HIT Pack Complex", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Мультивитамины", "desc": "Комплекс витаминов и минералов для восполнения суточной нормы микронутриентов при активном образе жизни.", "use": "", "variants": [{"size": "30 sachets x 8 pcs", "price": 3550, "flavors": []}]},
+{"id": "132", "name": "Multivitamin Complex", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Мультивитамины", "desc": "Комплекс витаминов и минералов для восполнения суточной нормы микронутриентов при активном образе жизни.", "use": "", "variants": [{"size": "60 tabs", "price": 2000, "flavors": []}]},
+{"id": "133", "name": "Anabolic Vita Pak", "brand": "LEVRONE", "cat": "Витамины и БАДы", "sub": "Мультивитамины", "desc": "Комплекс витаминов и минералов для восполнения суточной нормы микронутриентов при активном образе жизни.", "use": "", "variants": [{"size": "30 sachets", "price": 4250, "flavors": []}]},
+{"id": "134", "name": "GOLD Power Core Multivitamin", "brand": "LEVRONE", "cat": "Витамины и БАДы", "sub": "Мультивитамины", "desc": "Комплекс витаминов и минералов для восполнения суточной нормы микронутриентов при активном образе жизни.", "use": "", "variants": [{"size": "120 tabs", "price": 2000, "flavors": []}]},
+{"id": "135", "name": "Vita-Min Multiple Sport", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Мультивитамины", "desc": "Комплекс витаминов и минералов для восполнения суточной нормы микронутриентов при активном образе жизни.", "use": "", "variants": [{"size": "60 caps", "price": 1950, "flavors": []}]},
+{"id": "136", "name": "Vita-Min One", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Мультивитамины", "desc": "Комплекс витаминов и минералов для восполнения суточной нормы микронутриентов при активном образе жизни.", "use": "", "variants": [{"size": "60 caps", "price": 1550, "flavors": []}]},
+{"id": "137", "name": "Mega Pack 9 Pro", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Мультивитамины", "desc": "Комплекс витаминов и минералов для восполнения суточной нормы микронутриентов при активном образе жизни.", "use": "", "variants": [{"size": "30 packs", "price": 2900, "flavors": []}]},
+{"id": "138", "name": "Vitamins & Minerals Men's", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Мультивитамины", "desc": "Комплекс витаминов и минералов для восполнения суточной нормы микронутриентов при активном образе жизни.", "use": "", "variants": [{"size": "90 tabs", "price": 1800, "flavors": []}]},
+{"id": "139", "name": "Vitamins & Minerals Women's", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Мультивитамины", "desc": "Комплекс витаминов и минералов для восполнения суточной нормы микронутриентов при активном образе жизни.", "use": "", "variants": [{"size": "90 tabs", "price": 1800, "flavors": []}]},
+{"id": "140", "name": "D3 2000 + K2 Vitamin", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "30 caps", "price": 1900, "flavors": []}, {"size": "60 caps", "price": 2050, "flavors": []}]},
+{"id": "141", "name": "Vitamin B Complex", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "60 tabs", "price": 1850, "flavors": []}]},
+{"id": "142", "name": "Vitamin C Plus", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "60 tabs", "price": 1950, "flavors": []}]},
+{"id": "143", "name": "Biotin 10,000 mcg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "120 vcaps", "price": 1865, "flavors": []}]},
+{"id": "144", "name": "Biotin 5,000 mcg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "60 vcaps", "price": 1400, "flavors": []}]},
+{"id": "145", "name": "Niacinamide 500 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "60 vcaps", "price": 1400, "flavors": []}]},
+{"id": "146", "name": "Vitamin A 10,000 IU", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "100 softgels", "price": 1400, "flavors": []}]},
+{"id": "147", "name": "Vitamin B-Complex (Liposomal) 338 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "60 vcaps", "price": 2370, "flavors": []}]},
+{"id": "148", "name": "Vitamin C (Liposomal) 500 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "120 vcaps", "price": 2400, "flavors": []}]},
+{"id": "149", "name": "Vitamin C 500 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "90 vcaps", "price": 1550, "flavors": []}]},
+{"id": "150", "name": "Vitamin D3 & K2 1000 IU & 45 mcg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "120 softgels", "price": 1550, "flavors": []}]},
+{"id": "151", "name": "Vitamin D3 & K2 4000 IU & 100 mcg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "120 softgels", "price": 1880, "flavors": []}]},
+{"id": "152", "name": "Vitamin D3 10,000 IU", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "120 softgels", "price": 1650, "flavors": []}]},
+{"id": "153", "name": "Vitamin D3 2,000 IU", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "120 softgels", "price": 1450, "flavors": []}]},
+{"id": "154", "name": "Vitamin D3 5,000 IU", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "120 softgels", "price": 1500, "flavors": []}]},
+{"id": "155", "name": "Vitamin E 400 IU", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "50 softgels", "price": 1550, "flavors": []}]},
+{"id": "156", "name": "Vitamin K2 (MK-7) 100 mcg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "60 softgels", "price": 1670, "flavors": []}]},
+{"id": "157", "name": "D3 + K2 Gummies", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "90 ct", "price": 1950, "flavors": ["Orange"]}]},
+{"id": "158", "name": "Folic Acid Bioactive Folate 1,000 mcg", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "120 vcaps", "price": 2100, "flavors": []}]},
+{"id": "159", "name": "Vitamin D3 + K2 (Kids)", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "30 softgels", "price": 1600, "flavors": []}]},
+{"id": "160", "name": "Gold Vit C 1000 Sport Edition", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "60 caps", "price": 1800, "flavors": []}]},
+{"id": "161", "name": "Gold-Vit™ B Forte", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "60 tabs.", "price": 1300, "flavors": []}]},
+{"id": "162", "name": "Vitamin E 200 IU (134 mg)", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Отдельные витамины", "desc": "Отдельный витамин в удобной дозировке для восполнения конкретного дефицита в рационе.", "use": "", "variants": [{"size": "60 softgels", "price": 1450, "flavors": []}]},
+{"id": "163", "name": "Black Cumin Oil", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Омега-3 и масла", "desc": "Омега-3 жирные кислоты поддерживают работу сердца, суставов и мозга — рекомендуются как ежедневная добавка к рациону.", "use": "", "variants": [{"size": "60 softgels", "price": 2000, "flavors": []}]},
+{"id": "164", "name": "Omega 3", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Омега-3 и масла", "desc": "Омега-3 жирные кислоты поддерживают работу сердца, суставов и мозга — рекомендуются как ежедневная добавка к рациону.", "use": "", "variants": [{"size": "60 softgels", "price": 1800, "flavors": []}]},
+{"id": "165", "name": "Nutrition Omega 3-6-9", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Омега-3 и масла", "desc": "Омега-3 жирные кислоты поддерживают работу сердца, суставов и мозга — рекомендуются как ежедневная добавка к рациону.", "use": "", "variants": [{"size": "60 softgels", "price": 2000, "flavors": []}]},
+{"id": "166", "name": "Omega 3 (TG) 1000 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Омега-3 и масла", "desc": "Омега-3 жирные кислоты поддерживают работу сердца, суставов и мозга — рекомендуются как ежедневная добавка к рациону.", "use": "", "variants": [{"size": "90 softgels", "price": 1650, "flavors": []}, {"size": "180 softgels", "price": 2500, "flavors": []}]},
+{"id": "167", "name": "Ultra Omega 3 (TG 750mg - 500 250) 1000 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Омега-3 и масла", "desc": "Омега-3 жирные кислоты поддерживают работу сердца, суставов и мозга — рекомендуются как ежедневная добавка к рациону.", "use": "", "variants": [{"size": "180 softgels", "price": 3550, "flavors": []}]},
+{"id": "168", "name": "Gold Omega 3 D3+K2 Sport Edition", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Омега-3 и масла", "desc": "Омега-3 жирные кислоты поддерживают работу сердца, суставов и мозга — рекомендуются как ежедневная добавка к рациону.", "use": "", "variants": [{"size": "60 caps", "price": 2250, "flavors": []}]},
+{"id": "169", "name": "Gold Omega 3 Sport Edition", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Омега-3 и масла", "desc": "Омега-3 жирные кислоты поддерживают работу сердца, суставов и мозга — рекомендуются как ежедневная добавка к рациону.", "use": "", "variants": [{"size": "120 caps", "price": 2500, "flavors": []}]},
+{"id": "170", "name": "Omega-3", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Омега-3 и масла", "desc": "Омега-3 жирные кислоты поддерживают работу сердца, суставов и мозга — рекомендуются как ежедневная добавка к рациону.", "use": "", "variants": [{"size": "90 softgels", "price": 1450, "flavors": []}]},
+{"id": "171", "name": "Magnesium Bisglycinate", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Магний", "desc": "Магний участвует в работе мышц и нервной системы, помогает при судорогах и повышенной утомляемости на фоне тренировок.", "use": "", "variants": [{"size": "90 caps", "price": 2000, "flavors": []}]},
+{"id": "172", "name": "Magnesium Citrate 100 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Магний", "desc": "Магний участвует в работе мышц и нервной системы, помогает при судорогах и повышенной утомляемости на фоне тренировок.", "use": "", "variants": [{"size": "120 tabs", "price": 1700, "flavors": []}]},
+{"id": "173", "name": "Magnesium Glycinate 100 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Магний", "desc": "Магний участвует в работе мышц и нервной системы, помогает при судорогах и повышенной утомляемости на фоне тренировок.", "use": "", "variants": [{"size": "120 vcaps", "price": 2100, "flavors": []}]},
+{"id": "174", "name": "Magnesium Taurinate 50 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Магний", "desc": "Магний участвует в работе мышц и нервной системы, помогает при судорогах и повышенной утомляемости на фоне тренировок.", "use": "", "variants": [{"size": "120 tabs", "price": 1800, "flavors": []}]},
+{"id": "175", "name": "Magnesium Glycinate Liquid", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Магний", "desc": "Магний участвует в работе мышц и нервной системы, помогает при судорогах и повышенной утомляемости на фоне тренировок.", "use": "", "variants": [{"size": "14x25 ml", "price": 2450, "flavors": ["Orange"]}]},
+{"id": "176", "name": "Chela Magnesium + B6 Forte", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Магний", "desc": "Магний участвует в работе мышц и нервной системы, помогает при судорогах и повышенной утомляемости на фоне тренировок.", "use": "", "variants": [{"size": "60 caps", "price": 2200, "flavors": []}]},
+{"id": "177", "name": "Chela Magnesium + B6 Forte Sport Edition", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Магний", "desc": "Магний участвует в работе мышц и нервной системы, помогает при судорогах и повышенной утомляемости на фоне тренировок.", "use": "", "variants": [{"size": "90 caps", "price": 2500, "flavors": []}]},
+{"id": "178", "name": "Magnesium Citrate + B6", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Магний", "desc": "Магний участвует в работе мышц и нервной системы, помогает при судорогах и повышенной утомляемости на фоне тренировок.", "use": "", "variants": [{"size": "90 caps", "price": 1550, "flavors": []}]},
+{"id": "179", "name": "Magnesium Glycinate 600 mg + B6", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Магний", "desc": "Магний участвует в работе мышц и нервной системы, помогает при судорогах и повышенной утомляемости на фоне тренировок.", "use": "", "variants": [{"size": "90 caps", "price": 1650, "flavors": []}]},
+{"id": "180", "name": "CA MG ZN", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "90 caps", "price": 2000, "flavors": []}]},
+{"id": "181", "name": "ZN MG B6 Complex (ZMA)", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "60 caps", "price": 2100, "flavors": []}]},
+{"id": "182", "name": "Chelated Iron 36 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "90 vcaps", "price": 1675, "flavors": []}]},
+{"id": "183", "name": "Chromium Picolinate 200 mcg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "100 tabs", "price": 1350, "flavors": []}]},
+{"id": "184", "name": "Selenium 200 mcg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "100 tabs", "price": 1450, "flavors": []}]},
+{"id": "185", "name": "Zinc Gluconate 50 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "100 tabs", "price": 1320, "flavors": []}]},
+{"id": "186", "name": "Zinc Picolinate 50 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "60 vcaps", "price": 1500, "flavors": []}]},
+{"id": "187", "name": "GOLD PRO Zmax", "brand": "LEVRONE", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "90 tabs", "price": 1950, "flavors": []}]},
+{"id": "188", "name": "Calcium Citrate + D3", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "60 tabs", "price": 1650, "flavors": []}]},
+{"id": "189", "name": "Chromium Picolinate", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "100 vcaps", "price": 1750, "flavors": []}]},
+{"id": "190", "name": "Selenium 150 mcg", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "100 vcaps", "price": 1750, "flavors": []}]},
+{"id": "191", "name": "ZMA Max", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "90 caps", "price": 2200, "flavors": []}]},
+{"id": "192", "name": "Chela Ferr Forte", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "60 caps", "price": 1950, "flavors": []}]},
+{"id": "193", "name": "Chela Magnesium Zinc + B6 (ZMA)", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "60 caps", "price": 2100, "flavors": []}]},
+{"id": "194", "name": "Chromium Active 200 mcg", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "60 tabs", "price": 1650, "flavors": []}]},
+{"id": "195", "name": "Selen 110 mcg", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "120 tabs", "price": 1550, "flavors": []}]},
+{"id": "196", "name": "Chromium Picolinate 200mcg", "brand": "ULT", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "100 caps", "price": 2050, "flavors": []}]},
+{"id": "197", "name": "ZMA Complex", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "90 caps", "price": 1750, "flavors": []}]},
+{"id": "198", "name": "Zinc Chelated + Copper", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "ZMA, цинк и минералы", "desc": "Комплекс цинка, магния и других минералов — поддерживает восстановление, сон и иммунитет при активных тренировках.", "use": "", "variants": [{"size": "60 caps", "price": 1450, "flavors": []}]},
+{"id": "199", "name": "Collagen + Vitamin C + Hyaluronic Acid", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Коллаген", "desc": "Коллаген поддерживает здоровье суставов, связок и кожи — актуален при регулярных силовых нагрузках.", "use": "", "variants": [{"size": "500 ml", "price": 2550, "flavors": ["Mango", "Orange"]}]},
+{"id": "200", "name": "Collagen Complex", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Коллаген", "desc": "Коллаген поддерживает здоровье суставов, связок и кожи — актуален при регулярных силовых нагрузках.", "use": "", "variants": [{"size": "300 g", "price": 2850, "flavors": ["Grape"]}]},
+{"id": "201", "name": "Collaregen", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Коллаген", "desc": "Коллаген поддерживает здоровье суставов, связок и кожи — актуален при регулярных силовых нагрузках.", "use": "", "variants": [{"size": "400 g", "price": 3250, "flavors": ["Lemon", "Orange"]}]},
+{"id": "202", "name": "Kolagen Activ Plus Sport Edition", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Коллаген", "desc": "Коллаген поддерживает здоровье суставов, связок и кожи — актуален при регулярных силовых нагрузках.", "use": "", "variants": [{"size": "80 tabs", "price": 1950, "flavors": []}]},
+{"id": "203", "name": "Marine Collagen (Fish collagen) Hyaluronic Acid + Vitamin Сomplex", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Коллаген", "desc": "Коллаген поддерживает здоровье суставов, связок и кожи — актуален при регулярных силовых нагрузках.", "use": "", "variants": [{"size": "500 ml", "price": 1950, "flavors": ["Apple", "Cherry", "Mango", "Tropic"]}]},
+{"id": "204", "name": "Joint Support", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Суставы и связки", "desc": "Комплекс для суставов и связок (глюкозамин, хондроитин, MSM и др.) — поддержка при регулярных силовых и беговых нагрузках.", "use": "", "variants": [{"size": "90 tabs", "price": 2650, "flavors": []}]},
+{"id": "205", "name": "Joint Support", "brand": "LEVRONE", "cat": "Витамины и БАДы", "sub": "Суставы и связки", "desc": "Комплекс для суставов и связок (глюкозамин, хондроитин, MSM и др.) — поддержка при регулярных силовых и беговых нагрузках.", "use": "", "variants": [{"size": "495 g", "price": 2950, "flavors": ["Tropical"]}]},
+{"id": "206", "name": "Joint Support Collagen Peptides", "brand": "LEVRONE", "cat": "Витамины и БАДы", "sub": "Суставы и связки", "desc": "Комплекс для суставов и связок (глюкозамин, хондроитин, MSM и др.) — поддержка при регулярных силовых и беговых нагрузках.", "use": "", "variants": [{"size": "450 g", "price": 2900, "flavors": []}]},
+{"id": "207", "name": "Max Motion Can", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Суставы и связки", "desc": "Комплекс для суставов и связок (глюкозамин, хондроитин, MSM и др.) — поддержка при регулярных силовых и беговых нагрузках.", "use": "", "variants": [{"size": "500 g", "price": 1850, "flavors": ["Apricot - Mango", "Lemon Grapefruit"]}]},
+{"id": "208", "name": "Flex XPlode", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Суставы и связки", "desc": "Комплекс для суставов и связок (глюкозамин, хондроитин, MSM и др.) — поддержка при регулярных силовых и беговых нагрузках.", "use": "", "variants": [{"size": "360 g", "price": 2950, "flavors": ["Orange"]}]},
+{"id": "209", "name": "Glucosamine Chondroitin MSM", "brand": "ULT", "cat": "Витамины и БАДы", "sub": "Суставы и связки", "desc": "Комплекс для суставов и связок (глюкозамин, хондроитин, MSM и др.) — поддержка при регулярных силовых и беговых нагрузках.", "use": "", "variants": [{"size": "90 tabs", "price": 2550, "flavors": []}]},
+{"id": "210", "name": "Glucosamine Chondroitin MSM", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Суставы и связки", "desc": "Комплекс для суставов и связок (глюкозамин, хондроитин, MSM и др.) — поддержка при регулярных силовых и беговых нагрузках.", "use": "", "variants": [{"size": "90 tabs", "price": 1800, "flavors": []}]},
+{"id": "211", "name": "Mega Flex 4 Pro", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Суставы и связки", "desc": "Комплекс для суставов и связок (глюкозамин, хондроитин, MSM и др.) — поддержка при регулярных силовых и беговых нагрузках.", "use": "", "variants": [{"size": "30 packs", "price": 2800, "flavors": []}]},
+{"id": "212", "name": "Coenzime Q10 100 mg", "brand": "DORIAN YATES", "cat": "Витамины и БАДы", "sub": "Антиоксиданты и Q10", "desc": "Антиоксидантная добавка помогает организму справляться с окислительным стрессом от интенсивных тренировок.", "use": "", "variants": [{"size": "60 softgels", "price": 2050, "flavors": []}]},
+{"id": "213", "name": "Alpha Lipoic Acid 600 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Антиоксиданты и Q10", "desc": "Антиоксидантная добавка помогает организму справляться с окислительным стрессом от интенсивных тренировок.", "use": "", "variants": [{"size": "60 vcaps", "price": 2320, "flavors": []}]},
+{"id": "214", "name": "NAC With Selenium 600 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Антиоксиданты и Q10", "desc": "Антиоксидантная добавка помогает организму справляться с окислительным стрессом от интенсивных тренировок.", "use": "", "variants": [{"size": "60 vcaps", "price": 1650, "flavors": []}]},
+{"id": "215", "name": "Alpha Lipoic Acid", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Антиоксиданты и Q10", "desc": "Антиоксидантная добавка помогает организму справляться с окислительным стрессом от интенсивных тренировок.", "use": "", "variants": [{"size": "90 vcaps", "price": 2100, "flavors": []}]},
+{"id": "216", "name": "Turmeric Curcumin With Bioperine", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Антиоксиданты и Q10", "desc": "Антиоксидантная добавка помогает организму справляться с окислительным стрессом от интенсивных тренировок.", "use": "", "variants": [{"size": "90 vcaps", "price": 1900, "flavors": []}]},
+{"id": "217", "name": "CoEnzyme Q-10 100 mg", "brand": "ULT", "cat": "Витамины и БАДы", "sub": "Антиоксиданты и Q10", "desc": "Антиоксидантная добавка помогает организму справляться с окислительным стрессом от интенсивных тренировок.", "use": "", "variants": [{"size": "30 caps", "price": 1750, "flavors": []}]},
+{"id": "218", "name": "R-ALA (R-Alpha Lipoic Acid)", "brand": "ULT", "cat": "Витамины и БАДы", "sub": "Антиоксиданты и Q10", "desc": "Антиоксидантная добавка помогает организму справляться с окислительным стрессом от интенсивных тренировок.", "use": "", "variants": [{"size": "100 softgels", "price": 2950, "flavors": []}]},
+{"id": "219", "name": "Ashwagandha 300 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Ноотропы и адаптогены", "desc": "Растительный адаптоген/ноотроп поддерживает стрессоустойчивость, концентрацию и общий тонус организма.", "use": "", "variants": [{"size": "60 vcaps", "price": 1650, "flavors": []}]},
+{"id": "220", "name": "GOLD Ashwagandha", "brand": "LEVRONE", "cat": "Витамины и БАДы", "sub": "Ноотропы и адаптогены", "desc": "Растительный адаптоген/ноотроп поддерживает стрессоустойчивость, концентрацию и общий тонус организма.", "use": "", "variants": [{"size": "90 tabs", "price": 1900, "flavors": []}]},
+{"id": "221", "name": "GOLD Lion’s Mane 1000", "brand": "LEVRONE", "cat": "Витамины и БАДы", "sub": "Ноотропы и адаптогены", "desc": "Растительный адаптоген/ноотроп поддерживает стрессоустойчивость, концентрацию и общий тонус организма.", "use": "", "variants": [{"size": "90 tabs", "price": 1950, "flavors": []}]},
+{"id": "222", "name": "Dmae", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Ноотропы и адаптогены", "desc": "Растительный адаптоген/ноотроп поддерживает стрессоустойчивость, концентрацию и общий тонус организма.", "use": "", "variants": [{"size": "100 vcaps", "price": 1800, "flavors": []}]},
+{"id": "223", "name": "Ginkgo Biloba Organic", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Ноотропы и адаптогены", "desc": "Растительный адаптоген/ноотроп поддерживает стрессоустойчивость, концентрацию и общий тонус организма.", "use": "", "variants": [{"size": "60 tabs", "price": 1700, "flavors": []}]},
+{"id": "224", "name": "Maca 750 mg", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Ноотропы и адаптогены", "desc": "Растительный адаптоген/ноотроп поддерживает стрессоустойчивость, концентрацию и общий тонус организма.", "use": "", "variants": [{"size": "90 caps", "price": 1850, "flavors": []}]},
+{"id": "225", "name": "Ashwagandha 600 Sport", "brand": "Olimp", "cat": "Витамины и БАДы", "sub": "Ноотропы и адаптогены", "desc": "Растительный адаптоген/ноотроп поддерживает стрессоустойчивость, концентрацию и общий тонус организма.", "use": "", "variants": [{"size": "60 caps", "price": 1800, "flavors": []}]},
+{"id": "226", "name": "Ashwagandha 400 mg", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Ноотропы и адаптогены", "desc": "Растительный адаптоген/ноотроп поддерживает стрессоустойчивость, концентрацию и общий тонус организма.", "use": "", "variants": [{"size": "90 caps", "price": 1800, "flavors": []}]},
+{"id": "227", "name": "5-HTP 100 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Сон и релакс", "desc": "Добавка для расслабления и качественного сна — помогает восстановлению после тренировок.", "use": "", "variants": [{"size": "120 vcaps", "price": 2350, "flavors": []}]},
+{"id": "228", "name": "Gaba 500 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Сон и релакс", "desc": "Добавка для расслабления и качественного сна — помогает восстановлению после тренировок.", "use": "", "variants": [{"size": "100 vcaps", "price": 1700, "flavors": []}]},
+{"id": "229", "name": "Melatonin 10 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Сон и релакс", "desc": "Добавка для расслабления и качественного сна — помогает восстановлению после тренировок.", "use": "", "variants": [{"size": "60 tabs", "price": 1450, "flavors": []}]},
+{"id": "230", "name": "Melatonin 3 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Сон и релакс", "desc": "Добавка для расслабления и качественного сна — помогает восстановлению после тренировок.", "use": "", "variants": [{"size": "60 tabs", "price": 1315, "flavors": []}]},
+{"id": "231", "name": "Melatonin 5 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Сон и релакс", "desc": "Добавка для расслабления и качественного сна — помогает восстановлению после тренировок.", "use": "", "variants": [{"size": "60 tabs", "price": 1370, "flavors": []}]},
+{"id": "232", "name": "Gaba 500 mg", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Сон и релакс", "desc": "Добавка для расслабления и качественного сна — помогает восстановлению после тренировок.", "use": "", "variants": [{"size": "100 vcaps", "price": 2000, "flavors": []}]},
+{"id": "233", "name": "100% Premium Melatonin 3 mg", "brand": "ULT", "cat": "Витамины и БАДы", "sub": "Сон и релакс", "desc": "Добавка для расслабления и качественного сна — помогает восстановлению после тренировок.", "use": "", "variants": [{"size": "60 caps", "price": 1750, "flavors": []}]},
+{"id": "234", "name": "Gaba 750 mg", "brand": "ULT", "cat": "Витамины и БАДы", "sub": "Сон и релакс", "desc": "Добавка для расслабления и качественного сна — помогает восстановлению после тренировок.", "use": "", "variants": [{"size": "90 caps", "price": 2150, "flavors": []}]},
+{"id": "235", "name": "Chlorophyll", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Зелень и суперфуды", "desc": "Концентрат растительных нутриентов для поддержки энергии и общего тонуса.", "use": "", "variants": [{"size": "450 ml", "price": 2250, "flavors": ["Mint"]}]},
+{"id": "236", "name": "Organic Spirulina", "brand": "MXL", "cat": "Витамины и БАДы", "sub": "Зелень и суперфуды", "desc": "Концентрат растительных нутриентов для поддержки энергии и общего тонуса.", "use": "", "variants": [{"size": "180 tabs", "price": 1650, "flavors": []}]},
+{"id": "237", "name": "Chloropyll", "brand": "YLP", "cat": "Витамины и БАДы", "sub": "Зелень и суперфуды", "desc": "Концентрат растительных нутриентов для поддержки энергии и общего тонуса.", "use": "", "variants": [{"size": "510 ml", "price": 1950, "flavors": ["Tarragon"]}]},
+{"id": "238", "name": "Inosine (Иносин) 500 mg", "brand": "Fuel-Up", "cat": "Витамины и БАДы", "sub": "Прочие БАДы", "desc": "Биологически активная добавка для точечной поддержки организма.", "use": "", "variants": [{"size": "100 vcaps", "price": 1750, "flavors": []}]}
+];
+
+/* ---------- Состояние ---------- */
+let PRODUCTS = [];
+let cart = [];
+let filter = {cat:"", q:"", brand:"", sub:""};
+let current = null, curFlavor = "", curQty = 1, curVariantIdx = 0;
+
+const $ = s => document.querySelector(s);
+const money = n => new Intl.NumberFormat("ru-RU").format(Math.round(n)) + " ₽";
+
+/* ---------- Заглушка вместо фото ---------- */
+const TINT = {"Протеин":"#2F6F4E","Гейнер":"#245840","Креатин":"#3B6EA8","Аминокислоты":"#3E7C7C","HMB и таурин":"#2E5F5F","Изотоники и электролиты":"#5B8FBF","Жиросжигатели (похудение)":"#A8551A","Энергетики":"#8C4315","Предтренировочные комплексы":"#8C4B3B","Пампинг и донаторы азота":"#7A4A8C","Кофеин и гуарана":"#6B4A2E","Тестобустеры и мужское здоровье":"#5B3B6B","Витамины и БАДы":"#3B6EA8","Батончики и снеки":"#B4823C","Аксессуары":"#69756E","Одежда и мерч":"#69756E"};
+function placeholder(p){
+  const c = TINT[p.cat] || "#69756E";
+  const t = (p.brand || "?").trim().charAt(0).toUpperCase();
+  return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(p.name)}">
+    <rect width="200" height="200" fill="#F4F5F2"/>
+    <rect x="62" y="34" width="76" height="22" rx="5" fill="${c}" opacity=".28"/>
+    <rect x="52" y="52" width="96" height="116" rx="13" fill="${c}" opacity=".16"/>
+    <rect x="52" y="52" width="96" height="116" rx="13" fill="none" stroke="${c}" stroke-opacity=".4" stroke-width="2"/>
+    <text x="100" y="126" text-anchor="middle" font-family="Unbounded,sans-serif" font-size="46" font-weight="800" fill="${c}" opacity=".55">${t}</text>
+  </svg>`;
+}
+const esc = s => String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+function media(p, cls){
+  return p.img ? `<img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy">` : placeholder(p);
+}
+
+/* ---------- Загрузка каталога ---------- */
+function normalize(r, i){
+  const num = v => { const n = parseFloat(String(v??"").replace(/[^\d.,]/g,"").replace(",",".")); return isNaN(n)?0:n; };
+  return {
+    id: String(r.id ?? i+1),
+    name: r["название"] || r.name || "Без названия",
+    brand: r["бренд"] || r.brand || "",
+    cat: r["категория"] || r.cat || "",
+    sub: r.sub || "",
+    img: (r["фото"] || r.img || "").trim(),
+    desc: r["описание"] || r.desc || "",
+    use: r["применение"] || r.use || "",
+    variants: r.variants && r.variants.length ? r.variants : [{
+      size: r["фасовка"] || r.size || "",
+      price: num(r["цена"] ?? r.price),
+      flavors: (r["вкусы"] || r.flavors || "").split(",").map(s => s.trim()).filter(Boolean)
+    }]
+  };
+}
+
+function parseCSV(text){
+  const rows = []; let row = [], field = "", q = false;
+  for(let i=0;i<text.length;i++){
+    const c = text[i];
+    if(q){
+      if(c === '"'){ if(text[i+1] === '"'){ field += '"'; i++; } else q = false; }
+      else field += c;
+    } else {
+      if(c === '"') q = true;
+      else if(c === ","){ row.push(field); field = ""; }
+      else if(c === "\n"){ row.push(field); rows.push(row); row = []; field = ""; }
+      else if(c !== "\r") field += c;
+    }
+  }
+  if(field || row.length){ row.push(field); rows.push(row); }
+  if(!rows.length) return [];
+  const head = rows[0].map(h => h.trim().toLowerCase());
+  return rows.slice(1)
+    .filter(r => r.some(c => c.trim()))
+    .map(r => { const o = {}; head.forEach((h,i) => o[h] = (r[i]||"").trim()); return o; });
+}
+
+async function load(){
+  if(!CONFIG.sheetCsv){ PRODUCTS = DEMO.map(normalize); return; }
+  $("#loading").hidden = false;
+  try{
+    const res = await fetch(CONFIG.sheetCsv);
+    const rows = parseCSV(await res.text());
+    const list = rows.map(normalize).filter(p => p.name && p.variants[0].price);
+    PRODUCTS = list.length ? list : DEMO.map(normalize);
+  }catch(e){
+    console.warn("Не удалось загрузить таблицу, показываю демо-товары", e);
+    PRODUCTS = DEMO.map(normalize);
+  }
+  $("#loading").hidden = true;
+}
+
+/* ---------- Отрисовка ---------- */
+function buildChips(){
+  const used = CATS.filter(c => PRODUCTS.some(p => p.cat === c));
+  const extra = [...new Set(PRODUCTS.map(p => p.cat))].filter(c => c && !CATS.includes(c));
+  const all = ["Всё", ...used, ...extra];
+  $("#chips").innerHTML = all.map(c =>
+    `<button class="chip" data-cat="${c === "Всё" ? "" : esc(c)}" aria-pressed="${(c === "Всё") === !filter.cat}">${esc(c)}</button>`
+  ).join("");
+  buildSubChips();
+}
+
+function buildSubChips(){
+  const box = $("#subChips");
+  if(!filter.cat){ box.innerHTML = ""; box.hidden = true; return; }
+  const pool = PRODUCTS.filter(p => p.cat === filter.cat && (!filter.brand || p.brand === filter.brand));
+  const subs = [...new Set(pool.map(p => p.sub).filter(Boolean))];
+  if(subs.length < 2){ box.innerHTML = ""; box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = [`<button class="chip" data-sub="" aria-pressed="${!filter.sub}">Все подкатегории</button>`]
+    .concat(subs.map(s => `<button class="chip" data-sub="${esc(s)}" aria-pressed="${filter.sub === s}">${esc(s)}</button>`))
+    .join("");
+}
+
+function buildBrands(){
+  const bs = [...new Set(PRODUCTS.map(p => p.brand).filter(Boolean))].sort((a,b) => a.localeCompare(b,"ru"));
+  $("#brandSel").innerHTML = `<option value="">Все бренды</option>` +
+    bs.map(b => `<option value="${esc(b)}">${esc(b)}</option>`).join("");
+}
+
+function visible(){
+  const q = filter.q.trim().toLowerCase();
+  return PRODUCTS.filter(p => {
+    if(filter.cat && p.cat !== filter.cat) return false;
+    if(filter.sub && p.sub !== filter.sub) return false;
+    if(filter.brand && p.brand !== filter.brand) return false;
+    if(!q) return true;
+    const allFlavors = p.variants.flatMap(v => v.flavors).join(" ");
+    return (p.name + " " + p.brand + " " + p.cat + " " + p.sub + " " + allFlavors).toLowerCase().includes(q);
+  });
+}
+
+function pluralRu(n, one, few, many){
+  const mod10 = n % 10, mod100 = n % 100;
+  if(mod100 > 10 && mod100 < 20) return many;
+  if(mod10 === 1) return one;
+  if(mod10 > 1 && mod10 < 5) return few;
+  return many;
+}
+
+function priceLabel(p){
+  const prices = p.variants.map(v => v.price);
+  const min = Math.min(...prices), max = Math.max(...prices);
+  return min === max ? money(min) : `от ${money(min)}`;
+}
+
+function sizeLabel(p){
+  if(p.variants.length === 1) return p.variants[0].size || "";
+  return `${p.variants.length} ${pluralRu(p.variants.length,"фасовка","фасовки","фасовок")}`;
+}
+
+function renderGrid(){
+  const list = visible();
+  if(!list.length){
+    $("#grid").innerHTML = `<div class="empty" style="grid-column:1/-1">
+      <h3>Ничего не нашлось</h3><p>Попробуйте другое слово или напишите мне — привезу под заказ.</p></div>`;
+    return;
+  }
+  $("#grid").innerHTML = list.map(p => {
+    return `<button class="card" data-id="${esc(p.id)}">
+      <div class="thumb">${media(p)}</div>
+      <div class="card-b">
+        <div class="brand">${esc(p.brand)}</div>
+        <div class="name">${esc(p.name)}</div>
+        <div class="meta">${p.sub ? esc(p.sub) + " · " : ""}${esc(sizeLabel(p))}</div>
+        <div class="price-row">
+          <span class="price">${priceLabel(p)}</span>
+        </div>
+      </div>
+    </button>`;
+  }).join("");
+}
+
+/* ---------- Шторки ---------- */
+let openSheet = null;
+function show(el){
+  openSheet = el;
+  $("#scrim").classList.add("on");
+  el.classList.add("on");
+  document.body.style.overflow = "hidden";
+}
+function hide(){
+  $("#scrim").classList.remove("on");
+  document.querySelectorAll(".sheet").forEach(s => s.classList.remove("on"));
+  document.body.style.overflow = "";
+  openSheet = null;
+}
+$("#scrim").onclick = hide;
+document.querySelectorAll("[data-close]").forEach(b => b.onclick = hide);
+document.addEventListener("keydown", e => { if(e.key === "Escape" && openSheet) hide(); });
+
+function openProduct(id){
+  const p = PRODUCTS.find(x => x.id === id);
+  if(!p) return;
+  current = p; curQty = 1; curVariantIdx = 0;
+  const v0 = p.variants[0];
+  curFlavor = v0.flavors.length ? v0.flavors[0] : "";
+
+  $("#pSheet .sheet-head h2").textContent = p.brand || "Товар";
+  $("#pBody").innerHTML = `
+    <div class="p-img">${media(p)}</div>
+    <div class="brand">${esc(p.brand)}</div>
+    <div class="p-title">${esc(p.name)}</div>
+    ${p.sub ? `<div class="meta">${esc(p.sub)}</div>` : ""}
+    <div class="p-price" id="pPrice">${money(v0.price)}</div>
+    ${p.variants.length > 1 ? `<div class="sec"><h3>Фасовка</h3><div class="opts" id="sizes">
+      ${p.variants.map((vv,i) => `<button class="opt" data-i="${i}" aria-pressed="${i===0}">${esc(vv.size || "—")}</button>`).join("")}
+    </div></div>` : ""}
+    <div class="sec" id="flavorSec"><h3>Вкус</h3><div class="opts" id="flavors"></div></div>
+    ${p.desc ? `<div class="sec"><h3>Описание</h3><p>${esc(p.desc)}</p></div>` : ""}
+    ${p.use ? `<div class="sec"><h3>Как принимать</h3><p>${esc(p.use)}</p></div>` : ""}
+    <div class="sec"><p style="font-size:12.5px;color:var(--muted)">Не является лекарственным средством. Перед применением проконсультируйтесь со специалистом.</p></div>
+  `;
+  $("#pFoot").innerHTML = `
+    <div style="display:flex;gap:10px;align-items:center">
+      <div class="qty">
+        <button id="minus" aria-label="Меньше">−</button><span id="qv">1</span><button id="plus" aria-label="Больше">+</button>
+      </div>
+      <button class="btn" id="addBtn" style="flex:1">В корзину · ${money(v0.price)}</button>
+    </div>`;
+
+  renderFlavorOptions();
+
+  const sw = $("#sizes");
+  if(sw) sw.onclick = e => {
+    const b = e.target.closest("[data-i]"); if(!b) return;
+    curVariantIdx = +b.dataset.i;
+    const v = current.variants[curVariantIdx];
+    curFlavor = v.flavors.length ? v.flavors[0] : "";
+    sw.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b));
+    renderFlavorOptions();
+    updatePriceAndFoot();
+  };
+
+  $("#minus").onclick = () => { if(curQty > 1){ curQty--; updatePriceAndFoot(); } };
+  $("#plus").onclick  = () => { if(curQty < 99){ curQty++; updatePriceAndFoot(); } };
+  $("#addBtn").onclick = () => { addToCart(p, curVariantIdx, curFlavor, curQty); hide(); };
+
+  show($("#pSheet"));
+}
+
+function renderFlavorOptions(){
+  const v = current.variants[curVariantIdx];
+  const sec = $("#flavorSec");
+  if(!v.flavors.length){ sec.hidden = true; curFlavor = ""; return; }
+  if(v.flavors.length === 1){ sec.hidden = true; curFlavor = v.flavors[0]; return; }
+  sec.hidden = false;
+  $("#flavors").innerHTML = v.flavors.map(f => `<button class="opt" data-f="${esc(f)}" aria-pressed="${f===curFlavor}">${esc(f)}</button>`).join("");
+  $("#flavors").onclick = e => {
+    const b = e.target.closest("[data-f]"); if(!b) return;
+    curFlavor = b.dataset.f;
+    $("#flavors").querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b));
+  };
+}
+
+function updatePriceAndFoot(){
+  const v = current.variants[curVariantIdx];
+  $("#pPrice").innerHTML = money(v.price) + (v.multi ? ` <span style="font-size:12px;color:var(--muted);font-weight:500">— уточню точную цену по вкусу</span>` : "");
+  $("#qv").textContent = curQty;
+  $("#addBtn").textContent = `В корзину · ${money(v.price * curQty)}`;
+}
+
+/* ---------- Корзина ---------- */
+function saveCart(){ try{ localStorage.setItem("hs_cart", JSON.stringify(cart)); }catch(e){} }
+function loadCart(){ try{ cart = JSON.parse(localStorage.getItem("hs_cart") || "[]"); }catch(e){ cart = []; } }
+
+function addToCart(p, variantIdx, flavor, qty){
+  const v = p.variants[variantIdx];
+  const key = p.id + "|" + v.size + "|" + flavor;
+  const found = cart.find(i => i.key === key);
+  if(found) found.qty = Math.min(99, found.qty + qty);
+  else cart.push({key, id:p.id, name:p.name, brand:p.brand, size:v.size, flavor, price:v.price, qty});
+  saveCart(); renderCartBar();
+}
+function changeQty(key, d){
+  const i = cart.find(x => x.key === key); if(!i) return;
+  i.qty += d;
+  if(i.qty < 1) cart = cart.filter(x => x.key !== key);
+  saveCart(); renderCartBar(); renderCart();
+}
+const cartCount = () => cart.reduce((s,i) => s + i.qty, 0);
+const cartSum   = () => cart.reduce((s,i) => s + i.price * i.qty, 0);
+
+function renderCartBar(){
+  const n = cartCount();
+  $("#cartBadge").hidden = !n;
+  $("#cartBadge").textContent = n;
+  $("#cartbar").classList.toggle("on", n > 0 && !openSheet);
+  $("#cartbarLeft").textContent = `Корзина · ${n}`;
+  $("#cartbarRight").textContent = money(cartSum());
+}
+
+function renderCart(){
+  $("#cTitle").textContent = "Корзина";
+  if(!cart.length){
+    $("#cBody").innerHTML = `<div class="empty"><h3>Пока пусто</h3><p>Выберите товары в каталоге — итог посчитается сам.</p></div>`;
+    $("#cFoot").innerHTML = `<button class="btn ghost" onclick="location.reload()">К каталогу</button>`;
+    return;
+  }
+  $("#cBody").innerHTML = cart.map(i => {
+    const p = PRODUCTS.find(x => x.id === i.id) || i;
+    return `<div class="line-item">
+      <div class="li-img">${media(p)}</div>
+      <div class="li-main">
+        <div class="li-name">${esc(i.brand)} ${esc(i.name)}</div>
+        <div class="li-var">${esc(i.size)}${i.flavor ? " · " + esc(i.flavor) : ""}</div>
+        <div class="li-bot">
+          <div class="li-qty">
+            <button data-k="${esc(i.key)}" data-d="-1" aria-label="Меньше">−</button>
+            <span>${i.qty}</span>
+            <button data-k="${esc(i.key)}" data-d="1" aria-label="Больше">+</button>
+          </div>
+          <div class="li-sum">${money(i.price * i.qty)}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join("") + `<div class="total"><span>Итого</span><b>${money(cartSum())}</b></div>
+    <p style="font-size:12.5px;color:var(--muted)">Доставка считается отдельно — напишу стоимость после подтверждения заказа.</p>`;
+
+  $("#cBody").onclick = e => {
+    const b = e.target.closest("[data-k]"); if(!b) return;
+    changeQty(b.dataset.k, Number(b.dataset.d));
+  };
+  $("#cFoot").innerHTML = `<button class="btn" id="toForm">Оформить заказ</button>`;
+  $("#toForm").onclick = renderForm;
+}
+
+/* ---------- Оформление ---------- */
+function renderForm(){
+  $("#cTitle").textContent = "Оформление заказа";
+  $("#cBody").innerHTML = `
+    <div class="field"><label for="fName">Как вас зовут</label>
+      <input id="fName" placeholder="Имя" autocomplete="name" required></div>
+    <div class="field"><label for="fPhone">Телефон</label>
+      <input id="fPhone" type="tel" placeholder="+7 928 000 00 00" autocomplete="tel" required>
+      <small class="field-error" id="fPhoneErr" hidden>Проверьте номер — должно быть 10–11 цифр, например +7 928 000 00 00</small></div>
+    <div class="field"><label for="fCity">Город или село</label>
+      <input id="fCity" placeholder="Грозный" autocomplete="address-level2" required></div>
+    <div class="field"><label>Как получите заказ</label>
+      <div class="radio-grid">
+        <label class="radio"><input type="radio" name="dlv" value="Доставка по Чечне" checked>
+          <span><b>Доставка по Чечне</b><small>В тот же день или на следующий</small></span></label>
+        <label class="radio"><input type="radio" name="dlv" value="Отправка по России">
+          <span><b>Отправка по России</b><small>Стоимость посчитаю по адресу</small></span></label>
+      </div></div>
+    <div class="field sub-field" id="shipMethodField" hidden><label for="fShipMethod">Каким способом отправить</label>
+      <select id="fShipMethod">
+        <option value="Маршруткой">Маршруткой</option>
+        <option value="Почтой России">Почтой России</option>
+        <option value="СДЭК">СДЭК</option>
+        <option value="Свой вариант">Свой вариант — укажу ниже</option>
+      </select></div>
+    <div class="field sub-field" id="shipCustomField" hidden><label for="fShipCustom">Какой именно способ</label>
+      <input id="fShipCustom" placeholder="Например: Boxberry, другая ТК, свой адрес выдачи"></div>
+    <div class="field"><label for="fNote">Комментарий</label>
+      <textarea id="fNote" placeholder="Вкус, пожелания, удобное время связи"></textarea></div>
+    <label class="consent"><input type="checkbox" id="fOk" checked>
+      <span>Согласен на обработку моих данных для оформления заказа. Оплата — переводом или при получении, обсуждаем в переписке.</span></label>`;
+
+  const tg = CONFIG.telegram
+    ? `<button class="btn tg" id="sendTg" style="margin-top:8px">Отправить в Telegram</button>` : "";
+  $("#cFoot").innerHTML = `
+    <button class="btn" id="sendWa">Отправить заказ в WhatsApp</button>
+    ${tg}
+    <button class="btn ghost" id="back" style="margin-top:8px">Назад в корзину</button>`;
+  $("#back").onclick = renderCart;
+  $("#sendWa").onclick = () => send("wa");
+  if(CONFIG.telegram) $("#sendTg").onclick = () => send("tg");
+
+  const phoneInput = $("#fPhone");
+  phoneInput.addEventListener("input", () => {
+    $("#fPhoneErr").hidden = phoneInput.value.trim() === "" || isValidPhone(phoneInput.value);
+  });
+
+  document.querySelectorAll('input[name="dlv"]').forEach(r => r.addEventListener("change", updateShipFields));
+  $("#fShipMethod").addEventListener("change", updateShipFields);
+  updateShipFields();
+}
+
+function updateShipFields(){
+  const isRussia = document.querySelector('input[name="dlv"]:checked').value === "Отправка по России";
+  $("#shipMethodField").hidden = !isRussia;
+  const showCustom = isRussia && $("#fShipMethod").value === "Свой вариант";
+  $("#shipCustomField").hidden = !showCustom;
+}
+
+function phoneDigits(v){
+  return v.replace(/\D/g, "");
+}
+function isValidPhone(v){
+  const d = phoneDigits(v);
+  if(d.length === 10) return true;
+  if(d.length === 11 && (d[0] === "7" || d[0] === "8")) return true;
+  return false;
+}
+
+function orderText(){
+  const n  = $("#fName").value.trim();
+  const ph = $("#fPhone").value.trim();
+  const ct = $("#fCity").value.trim();
+  const dl = document.querySelector('input[name="dlv"]:checked').value;
+  const nt = $("#fNote").value.trim();
+  let dlLine = dl;
+  if(dl === "Отправка по России"){
+    const method = $("#fShipMethod").value;
+    const custom = $("#fShipCustom").value.trim();
+    dlLine = `${dl} — ${method === "Свой вариант" ? (custom || "способ уточню") : method}`;
+  }
+  const num = Math.floor(Math.random()*9000 + 1000);
+  const lines = cart.map((i,k) =>
+    `${k+1}. ${i.brand} ${i.name}${i.size ? ", " + i.size : ""}${i.flavor ? " (" + i.flavor + ")" : ""}\n   ${i.qty} шт × ${money(i.price)} = ${money(i.price*i.qty)}`
+  ).join("\n");
+  return `Заказ №${num} с витрины\n\n${lines}\n\nИтого: ${money(cartSum())}\n\nИмя: ${n}\nТелефон: ${ph}\nГород: ${ct}\nПолучение: ${dlLine}${nt ? "\nКомментарий: " + nt : ""}`;
+}
+
+function send(channel){
+  const n = $("#fName").value.trim(), ph = $("#fPhone").value.trim(), ct = $("#fCity").value.trim();
+  if(!n || !ph || !ct){
+    alert("Заполните имя, телефон и город — без них я не смогу оформить заказ.");
+    return;
+  }
+  if(!isValidPhone(ph)){
+    $("#fPhoneErr").hidden = false;
+    $("#fPhone").focus();
+    alert("Проверьте номер телефона — похоже, не хватает цифр (нужно 10–11).");
+    return;
+  }
+  const dl = document.querySelector('input[name="dlv"]:checked').value;
+  if(dl === "Отправка по России"){
+    const method = $("#fShipMethod").value;
+    if(method === "Свой вариант" && !$("#fShipCustom").value.trim()){
+      alert("Укажите способ отправки в поле «Какой именно способ» — без него не смогу оформить пересылку.");
+      $("#fShipCustom").focus();
+      return;
+    }
+  }
+  if(!$("#fOk").checked){ alert("Нужно согласие на обработку данных."); return; }
+  const txt = encodeURIComponent(orderText());
+  const url = channel === "wa"
+    ? `https://wa.me/${CONFIG.whatsapp}?text=${txt}`
+    : `https://t.me/${CONFIG.telegram}?text=${txt}`;
+  window.open(url, "_blank");
+  done();
+}
+
+function done(){
+  const num = Math.floor(Math.random()*9000 + 1000);
+  cart = []; saveCart(); renderCartBar();
+  $("#cTitle").textContent = "Заказ собран";
+  $("#cBody").innerHTML = `<div class="empty">
+    <h3>Осталось нажать «Отправить»</h3>
+    <p>Заказ уже вставлен в переписку — отправьте сообщение, и я подтвержу наличие и сумму с доставкой.</p>
+    <p style="margin-top:10px">Если окно не открылось, напишите мне напрямую.</p></div>`;
+  const tgBtn = CONFIG.telegram ? `<a class="btn ghost" style="margin-top:8px;text-decoration:none" href="https://t.me/${CONFIG.telegram}" target="_blank">Написать в Telegram</a>` : "";
+  $("#cFoot").innerHTML = `<a class="btn" style="text-decoration:none" href="https://wa.me/${CONFIG.whatsapp}" target="_blank">Написать в WhatsApp</a>${tgBtn}
+    <button class="btn ghost" id="back2" style="margin-top:8px">Вернуться в каталог</button>`;
+  $("#back2").onclick = hide;
+}
+
+/* ---------- События ---------- */
+$("#grid").onclick = e => {
+  const c = e.target.closest(".card");
+  if(c && !c.disabled) openProduct(c.dataset.id);
+};
+$("#chips").onclick = e => {
+  const b = e.target.closest(".chip"); if(!b) return;
+  filter.cat = b.dataset.cat;
+  filter.sub = "";
+  $("#chips").querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b));
+  buildSubChips();
+  renderGrid();
+};
+$("#subChips").onclick = e => {
+  const b = e.target.closest(".chip"); if(!b) return;
+  filter.sub = b.dataset.sub;
+  $("#subChips").querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b));
+  renderGrid();
+};
+$("#q").oninput = e => { filter.q = e.target.value; renderGrid(); };
+$("#brandSel").onchange = e => { filter.brand = e.target.value; filter.sub = ""; buildSubChips(); renderGrid(); };
+const openCartSheet = () => { renderCart(); show($("#cSheet")); renderCartBar(); };
+$("#openCart").onclick = openCartSheet;
+$("#cartbarBtn").onclick = openCartSheet;
+
+/* ---------- Старт ---------- */
+(async function init(){
+  $("#footContacts").innerHTML =
+    `WhatsApp: <a href="https://wa.me/${CONFIG.whatsapp}" target="_blank">написать</a>` +
+    (CONFIG.telegram ? ` · Telegram: <a href="https://t.me/${CONFIG.telegram}" target="_blank">@${CONFIG.telegram}</a>` : "");
+  loadCart();
+  await load();
+  buildChips(); buildBrands(); renderGrid(); renderCartBar();
+})();
+</script>
+</body>
+</html>
