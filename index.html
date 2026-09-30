@@ -437,6 +437,9 @@ a.btn{text-decoration:none}
 <div class="sheet" id="cSheet" role="dialog" aria-modal="true" aria-label="Корзина">
   <div class="sheet-head">
     <h2 id="cTitle">Корзина</h2>
+    <button class="share" id="shareCartBtn" hidden aria-label="Поделиться корзиной">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v12"/><path d="m7 8 5-5 5 5"/></svg>
+    </button>
     <button class="close" data-close aria-label="Закрыть">✕</button>
   </div>
   <div class="sheet-body" id="cBody"></div>
@@ -1063,6 +1066,29 @@ async function shareProduct(p){
     window.prompt("Скопируйте ссылку на товар:", url);
   }
 }
+/* ---------- Ссылка на корзину ---------- */
+function cartShareString(){
+  return cart.map(i => [i.id, i.size, i.flavor, i.qty].join("~")).join(";");
+}
+const cartUrl = () => `${location.origin}${location.pathname}#cart=${encodeURIComponent(cartShareString())}`;
+async function shareCart(){
+  if(!cart.length) return;
+  goal("share_cart");
+  const url = cartUrl();
+  const text = `Моя корзина в bionohcho: ${cart.length} ${pluralRu(cart.length,"товар","товара","товаров")} на ${money(cartSum())}`;
+  if(navigator.share){
+    try{ await navigator.share({title: text, text, url}); }catch(e){}
+    return;
+  }
+  try{
+    await navigator.clipboard.writeText(`${text}\n${url}`);
+    toast("Ссылка на корзину скопирована — вставьте её в чат или статус");
+  }catch(e){
+    window.prompt("Скопируйте ссылку на корзину:", url);
+  }
+}
+$("#shareCartBtn").onclick = shareCart;
+
 $("#scrim").onclick = hide;
 document.querySelectorAll("[data-close]").forEach(b => b.onclick = hide);
 document.addEventListener("keydown", e => { if(e.key === "Escape" && openSheet) hide(); });
@@ -1297,6 +1323,7 @@ function reconcileCart(){
 
 function renderCart(){
   $("#cTitle").textContent = "Корзина";
+  $("#shareCartBtn").hidden = !cart.length;
   if(!cart.length){
     const lo = lastOrder();
     $("#cBody").innerHTML = `<div class="empty"><h3>Пока пусто</h3><p>Выберите товары в каталоге — итог посчитается сам.</p></div>`;
@@ -1615,12 +1642,34 @@ $("#cartbarBtn").onclick = openCartSheet;
 })();
 
 function openFromHash(){
-  const m = location.hash.match(/^#p=([\w-]+)/);
-  if(!m) return;
-  if(openSheet) closeLayers();
+  const mp = location.hash.match(/^#p=([\w-]+)/);
+  if(mp){
+    if(openSheet) closeLayers();
+    histClearHash();
+    if(PRODUCTS.some(p => p.id === mp[1])) openProduct(mp[1]);
+    else toast("Этого товара сейчас нет в каталоге — посмотрите похожие или напишите мне", 4500);
+    return;
+  }
+  const mc = location.hash.match(/^#cart=(.+)/);
+  if(mc) openSharedCart(decodeURIComponent(mc[1]));
+}
+function openSharedCart(raw){
   histClearHash();
-  if(PRODUCTS.some(p => p.id === m[1])) openProduct(m[1]);
-  else toast("Этого товара сейчас нет в каталоге — посмотрите похожие или напишите мне", 4500);
+  const entries = raw.split(";").filter(Boolean).map(e => e.split("~"));
+  let added = 0;
+  for(const [id, size, flavor, qtyStr] of entries){
+    const p = PRODUCTS.find(x => x.id === id); if(!p) continue;
+    const vi = p.variants.findIndex(v => v.size === size); if(vi < 0) continue;
+    const v = p.variants[vi];
+    const fl = !flavor ? "" : (v.flavors.includes(flavor) ? flavor : (v.flavors[0] || ""));
+    addToCart(p, vi, fl, Math.max(1, parseInt(qtyStr, 10) || 1));
+    added++;
+  }
+  if(!added){ toast("Эта корзина устарела — таких товаров уже нет в каталоге", 4500); return; }
+  openCartSheet();
+  toast(added < entries.length
+    ? `Добавлено ${added} из ${entries.length} — остальных уже нет в каталоге`
+    : "Добавлена корзина, которой с вами поделились", 3600);
 }
 </script>
 </body>
